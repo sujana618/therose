@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>Portrait — The Rose</title>
+
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+
+        .pixel-font  { font-family: 'Silkscreen', cursive; }
+        .press-font  { font-family: 'Press Start 2P', cursive; }
+        .script-font { font-family: 'Dancing Script', cursive; }
+
+        /* ── Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(.2, .65, .3, 1);
+        }
+
+        /* ── Magnetic ── */
+        .magnetic { transition: transform 0.2s; cursor: pointer; }
+
+        /* ── Nav float ── */
+        .nav-float { transition: 0.3s; }
+
+        /* ── Split image hover ── */
+        .split-img { border-radius: 2rem; overflow: hidden; }
+        .split-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .split-img:hover img { transform: scale(1.05); }
+
+        /* ── Gallery hover ── */
+        .gallery-item { border-radius: 1.5rem; overflow: hidden; }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        /* ── Grayscale hero image ── */
+        .bw-img { filter: grayscale(100%); }
+
+        /* ── Focus ── */
+        input:focus, textarea:focus {
+            background: rgba(255,255,255,0.08) !important;
+            border-color: rgba(255,255,255,0.25) !important;
+            outline: none;
+        }
+        input, textarea { outline: none; }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #f5f5f5; }
+        ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+        /* ── Quote left border accent ── */
+        .quote-accent {
+            border-left: 2px solid #d1d1d1;
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f5f5f5] text-[#111] overflow-x-hidden">
+
+
+<!-- ══════════════════════════════════════════════
+     HERO — Full-bleed B&W portrait photo
+     Script brand name overlaid bottom-left
+     Courier description top-right
+══════════════════════════════════════════════ -->
+<section class="relative w-full overflow-hidden rounded-b-[2.5rem] reveal" style="height: 100vh; min-height: 600px;">
+
+    <!-- B&W full-bleed portrait image -->
+    <img src="assets/images/portrait.avif"
+         alt="Portrait hero"
+         class="bw-img absolute inset-0 w-full h-full object-cover object-center">
+
+    <!-- dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 pointer-events-none"></div>
+
+    <!-- back link -->
+    <a href="index.html"
+       class="absolute top-7 left-8 z-10 flex items-center gap-2 text-white/60 hover:text-white transition-colors pixel-font text-[9px] tracking-widest uppercase">
+        <span>←</span> Back
+    </a>
+
+    <!-- TOP-RIGHT: Courier-style description (exactly as in frame 1) -->
+    <div class="absolute top-1/3 right-10 z-10 max-w-[260px] text-right hidden md:block">
+        <p class="text-white/60 leading-[2] text-[10px]"
+           style="font-family:'Courier New',monospace; font-size:10px;">
+            I'm Rose Shrestha, a visual creator driven by<br>
+            the art of storytelling. Through design,<br>
+            photography, cinematography, and aerial<br>
+            shots, I transform ideas into striking visuals<br>
+            that connect, engage, and leave an impression.
+        </p>
+    </div>
+
+    <!-- BOTTOM-LEFT: Cursive brand script (exactly as in frame 1) -->
+    <div class="absolute bottom-16 left-10 z-10">
+        <h1 class="script-font text-3xl md:text-4xl text-white/80">The rose Shrestha ♡</h1>
+    </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1 — Red concert image LEFT + White quote card RIGHT
+     (frames 2 & 3 — vivid red moody portrait, white card with left border quote)
+══════════════════════════════════════════════ -->
+<section class="max-w-[1300px] mx-auto px-6 pt-10 pb-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+    <!-- vivid RED portrait/concert image -->
+    <div class="split-img min-h-[580px] bg-zinc-900 relative">
+        <img src="assets/images/portrait.avif" alt="Red portrait">
+        <!-- red colour tint overlay -->
+        <div class="absolute inset-0 bg-red-700/30 mix-blend-multiply pointer-events-none rounded-[2rem]"></div>
+        <!-- watermark script bottom-left — matches frames 2 & 3 -->
+        <div class="absolute bottom-6 left-7 z-10 pointer-events-none">
+            <p class="script-font text-base text-white/40">The rose Shrestha ♡</p>
+        </div>
+    </div>
+
+    <!-- white quote card — with left border accent exactly as in frames 2 & 3 -->
+    <div class="bg-white rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+        <div class="quote-accent mb-10">
+            <p class="text-gray-500 text-sm leading-relaxed" style="font-family:'Inter',sans-serif; font-style:italic;">
+                Capturing more than a face—each portrait is a story shaped by emotion, light, and
+                presence, revealing the essence behind the subject.
+            </p>
+        </div>
+        <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-5">The Portrait</p>
+        <h2 class="pixel-font text-xl md:text-2xl text-[#111] leading-snug mb-7">
+            CAPTURING MORE<br>THAN A FACE
+        </h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif;">
+            Every session is an intimate collaboration—light sculpted to reveal character,
+            emotion drawn out through trust, and moments frozen that tell the real story
+            of who you are.
+        </p>
+        <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+                <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Concert &amp; Event Portraits</span>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Studio &amp; Location Sessions</span>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Creative Editorial Work</span>
+            </li>
+        </ul>
+    </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FULL-WIDTH IMAGE — Dark B&W performer
+     (frame 4 top — full-bleed performer close-up, dark, rounded bottom)
+══════════════════════════════════════════════ -->
+<section class="px-6 py-5 reveal">
+    <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 58vh;">
+        <img src="assets/images/portrait.avif"
+             alt="Performer close-up"
+             class="bw-img w-full h-full object-cover object-top">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 pointer-events-none"></div>
+
+        <!-- watermark — matches frame 4 right side -->
+        <div class="absolute top-8 right-8 pointer-events-none">
+            <p class="script-font text-xl text-white/30">The rose Shrestha ♡</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2 — White card LEFT + Colorful concert image RIGHT
+     (frame 4 bottom — confetti/blue concert image on right)
+══════════════════════════════════════════════ -->
+<section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+    <!-- white text card -->
+    <div class="bg-white rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+        <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-5">The Energy</p>
+        <h2 class="pixel-font text-xl md:text-2xl text-[#111] leading-snug mb-7">
+            THE PULSE<br>OF EVERY<br>PERFORMANCE
+        </h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif;">
+            From the quiet before the stage to the roar of the crowd—concert and performance
+            photography that captures raw energy, light, and the human connection between
+            artist and audience.
+        </p>
+        <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+                <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Live Music &amp; Concerts</span>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Stage Performances</span>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Festival Coverage</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- colorful concert/confetti image -->
+    <div class="split-img min-h-[480px] bg-zinc-900">
+        <img src="assets/images/ser1.avif" alt="Concert colorful">
+    </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3 — B&W spotlight image LEFT + White attribution card RIGHT
+     (frame 5 — b&w light-rays image left, white card with "THE ROSE SHRESTHA / Artist")
+══════════════════════════════════════════════ -->
+<section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+    <!-- B&W spotlight portrait image with watermark -->
+    <div class="split-img min-h-[560px] bg-zinc-900 relative">
+        <img src="assets/images/portrait.avif"
+             alt="B&W spotlight portrait"
+             class="bw-img">
+        <!-- watermark — matches frame 5 bottom-left -->
+        <div class="absolute bottom-6 left-7 z-10 pointer-events-none">
+            <p class="script-font text-base text-white/35">The rose Shrestha ♡</p>
+        </div>
+    </div>
+
+    <!-- white card — quote + "THE ROSE SHRESTHA / Artist" attribution (frame 5) -->
+    <div class="bg-white rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+        <div class="quote-accent mb-10">
+            <p class="text-gray-400 text-sm leading-relaxed text-center" style="font-family:'Inter',sans-serif; font-style:italic;">
+                Portraits that go beyond the surface—crafted to reflect character, emotion,
+                and the quiet moments in between.
+            </p>
+        </div>
+        <div class="border-t border-gray-100 pt-8 mt-2 text-center">
+            <p class="pixel-font text-[11px] tracking-[0.2em] text-[#111] uppercase mb-2">THE ROSE SHRESTHA</p>
+            <p class="text-gray-400 text-xs" style="font-family:'Inter',sans-serif;">Artist</p>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     GALLERY GRID — portrait collection
+══════════════════════════════════════════════ -->
+<section class="max-w-[1300px] mx-auto px-6 py-10 reveal">
+
+    <div class="mb-10 flex items-end justify-between">
+        <div>
+            <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-3">Gallery</p>
+            <h2 class="pixel-font text-2xl md:text-3xl text-[#111]">FACES &amp;<br>MOMENTS</h2>
+        </div>
+        <p class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest hidden md:block">Portrait Collection</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+        <div class="gallery-item aspect-[3/4] bg-gray-200">
+            <img src="assets/images/portrait.avif" alt="P1" class="bw-img">
+        </div>
+
+        <div class="gallery-item aspect-[3/4] bg-gray-200">
+            <img src="assets/images/ser1.avif" alt="P2">
+        </div>
+
+        <div class="gallery-item aspect-[3/4] bg-gray-200">
+            <img src="assets/images/portrait.avif" alt="P3" style="filter:grayscale(100%) contrast(1.1);">
+        </div>
+
+        <div class="gallery-item col-span-2 aspect-video bg-gray-200">
+            <img src="assets/images/portrait.avif" alt="P4 wide" style="filter:grayscale(100%);">
+        </div>
+
+        <div class="gallery-item aspect-video bg-gray-200">
+            <img src="assets/images/ser1.avif" alt="P5">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     STATS + DETAIL CARDS
+══════════════════════════════════════════════ -->
+<section class="max-w-[1300px] mx-auto px-6 pb-10 grid md:grid-cols-2 gap-6 reveal">
+
+    <!-- Milestones card — same as index.html -->
+    <div class="bg-zinc-900 rounded-[60px] p-10 md:p-16 flex flex-col items-center space-y-10 border border-white/5 text-center">
+        <h2 class="pixel-font text-2xl md:text-3xl tracking-tighter text-white uppercase">Portrait Stats</h2>
+        <div class="w-full space-y-14 py-6">
+            <div class="group">
+                <div class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">50+</div>
+                <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Portrait Sessions</div>
+                <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+            </div>
+            <div class="group">
+                <div class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">30+</div>
+                <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Concert Shoots</div>
+                <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+            </div>
+            <div class="group">
+                <div class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">4+</div>
+                <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Years of Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stacked detail cards -->
+    <div class="flex flex-col gap-5">
+
+        <div class="bg-white rounded-[2rem] p-8 flex-1 border border-gray-100">
+            <span class="text-2xl mb-4 block">🎭</span>
+            <p class="pixel-font text-[9px] tracking-[0.25em] text-gray-400 uppercase mb-2">Style</p>
+            <h3 class="pixel-font text-xs text-[#111] mb-3">EDITORIAL PORTRAITS</h3>
+            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
+                Moody, cinematic, and expressive — portrait sessions tailored to reveal your
+                authentic self through thoughtful light, composition, and direction.
+            </p>
+        </div>
+
+        <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex-1">
+            <span class="text-2xl mb-4 block">🎸</span>
+            <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Speciality</p>
+            <h3 class="pixel-font text-xs text-white mb-3">CONCERT PHOTOGRAPHY</h3>
+            <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
+                High-speed concert shooting with fast prime lenses. Capturing raw performance
+                energy under challenging low-light stage conditions.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-[2rem] p-8 flex-1 border border-gray-100">
+            <span class="text-2xl mb-4 block">📦</span>
+            <p class="pixel-font text-[9px] tracking-[0.25em] text-gray-400 uppercase mb-2">Deliverables</p>
+            <h3 class="pixel-font text-xs text-[#111] mb-3">WHAT YOU GET</h3>
+            <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
+                Fully retouched high-resolution images, delivered in 5–7 days via private
+                gallery. Print-ready files and web-optimized versions included.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     CONTACT — dark starfield/galaxy bg (same as aerial & index)
+══════════════════════════════════════════════ -->
+<section id="contact" class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
+
+    <div class="absolute inset-0 z-0">
+        <img src="assets/images/contact.avif"
+             alt="Contact background"
+             class="w-full h-full object-cover grayscale opacity-60">
+        <div class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <div class="text-white space-y-8">
+            <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
+                GET IN<br>TOUCH
+            </h1>
+            <p class="text-gray-300 max-w-sm text-sm md:text-base leading-relaxed font-light opacity-80"
+               style="font-family:'Inter',sans-serif;">
+                Have a project in mind? Whether you're launching a brand, designing a product,
+                or elevating your digital presence, we're here to bring your vision to life.
+            </p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl">
+            <h2 class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase">
+                Contact Us
+            </h2>
+
+            <form class="space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-3">
+                        <label class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">First name</label>
+                        <input type="text" placeholder="rose"
+                               class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                    </div>
+                    <div class="space-y-3">
+                        <label class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Last name</label>
+                        <input type="text" placeholder="shrestha"
+                               class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-3">
+                        <label class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Email</label>
+                        <input type="email" placeholder="roseshr12@gmail.com"
+                               class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                    </div>
+                    <div class="space-y-3">
+                        <label class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Phone no.</label>
+                        <input type="tel" placeholder="9860307418"
+                               class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase">
+                    Submit
+                </button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FOOTER — identical to index.html (frame 6)
+══════════════════════════════════════════════ -->
+<footer class="px-6 pb-24 bg-[#f5f5f5]">
+
+    <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+
+        <div class="grid md:grid-cols-3 gap-16">
+
+            <!-- LEFT -->
+            <div>
+                <p class="text-xs tracking-widest text-gray-400 mb-4">STAY CONNECTED.</p>
+                <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    I'm Rose Shrestha, a visual creator driven by the art of storytelling.
+                    Through design, photography, cinematography, and aerial shots, I transform
+                    ideas into striking visuals that connect, engage, and leave an impression.
+                </p>
+            </div>
+
+            <!-- CENTER -->
+            <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
+                <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
+                <a href="#" class="magnetic hover:text-gray-300 transition-colors">About</a>
+                <div class="flex items-center gap-2 magnetic">
+                    Services <span class="text-xs text-gray-500">(06)</span>
+                </div>
+                <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="flex flex-col items-start md:items-end text-white">
+                <p class="mb-6 text-lg">Social Media</p>
+                <div class="flex gap-6 text-xl">
+                    <i class="fab fa-x-twitter magnetic"></i>
+                    <i class="fab fa-instagram magnetic"></i>
+                    <i class="fab fa-linkedin magnetic"></i>
+                    <i class="fab fa-youtube magnetic"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BIG CENTER TEXT -->
+        <div class="text-center mt-20">
+            <h1 class="press-font text-6xl text-gray-300">Rose</h1>
+            <p class="text-sm text-gray-500 mt-6">©2026 The Rose Shrestha. All right reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- ── FLOATING NAV — identical to index.html ── -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-50">
+        <div class="flex gap-6 text-sm text-gray-300">
+            <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
+            <a href="#" class="magnetic hover:text-white transition-colors">ABOUT</a>
+            <a href="#" class="magnetic hover:text-white transition-colors">SERVICES</a>
+        </div>
+        <a href="#contact"
+           class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+            CONTACT +
+        </a>
+    </div>
+
+</footer>
+
+
+<!-- ══════════════════════════════════════════════ JS ══════════════════════════════════════════════ -->
+<script>
+    // ── Reveal on scroll ──
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('active');
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Magnetic ──
+    document.querySelectorAll('.magnetic').forEach(el => {
+        el.addEventListener('mousemove', e => {
+            const r = el.getBoundingClientRect();
+            const x = e.clientX - r.left - r.width / 2;
+            const y = e.clientY - r.top - r.height / 2;
+            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
+    });
+</script>
+
+</body>
+</html>

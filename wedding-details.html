@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <title>Wedding — The Rose</title>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .pixel-font {
+            font-family: 'Silkscreen', cursive;
+        }
+
+        .press-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(.2, .65, .3, 1);
+        }
+
+        /* Magnetic */
+        .magnetic {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        /* Nav float */
+        .nav-float {
+            transition: 0.3s;
+        }
+
+        /* Split image hover */
+        .split-img {
+            border-radius: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .split-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .split-img:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Gallery hover */
+        .gallery-item img {
+            transition: transform 0.6s ease, filter 0.4s;
+            filter: grayscale(20%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        /* Focus */
+        input:focus,
+        textarea:focus {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+
+
+    <!-- ══════════════════════════════════════════
+     HERO — full bleed image, pixel title
+══════════════════════════════════════════ -->
+    <section class="relative w-full min-h-screen overflow-hidden rounded-b-[2.5rem] reveal">
+
+        <img src="assets/images/wedding.jpg" alt="Wedding hero"
+            class="absolute inset-0 w-full h-full object-cover object-center">
+
+        <!-- warm golden overlay matching the screenshot -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
+
+        <div class="relative z-10 w-full h-full min-h-screen flex items-center justify-between px-10 md:px-16 py-32">
+
+            <!-- LEFT -->
+            <div>
+                <p class="pixel-font text-[10px] tracking-[0.25em] text-white/60 mb-4 uppercase">Wedding</p>
+                <h1 class="pixel-font text-5xl md:text-8xl text-black leading-tight drop-shadow-sm">WEDDING</h1>
+            </div>
+
+            <!-- RIGHT description -->
+            <div class="hidden md:block max-w-xs text-right">
+                <p class="text-xs text-black/70 leading-[1.9]"
+                    style="font-family:'Courier New',monospace; font-size:11px;">
+                    I'm Rose Shrestha, a visual creator driven by<br>
+                    the art of storytelling. Through design,<br>
+                    photography, cinematography, and aerial<br>
+                    shots, I transform ideas into striking visuals<br>
+                    that connect, engage, and leave an impression.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     SECTION 1 — Image LEFT + White card RIGHT
+══════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-10 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+        <!-- image card -->
+        <div class="split-img min-h-[520px] bg-zinc-900">
+            <img src="assets/images/ser2.avif" alt="Wedding moment">
+        </div>
+
+        <!-- text card — warm off-white like screenshot -->
+        <div class="bg-[#f2ede5] rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+            <p class="pixel-font text-[9px] tracking-[0.3em] text-zinc-400 uppercase mb-5">The Story</p>
+            <h2 class="pixel-font text-xl md:text-2xl text-zinc-900 leading-snug mb-7">
+                A STORY OF<br>TRADITION &amp;<br>ELEGANCE
+            </h2>
+            <p class="text-zinc-600 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif">
+                A story of tradition and elegance, captured through light, motion, and detail—where
+                every frame reflects timeless beauty and cultural grace. Through design, photography,
+                cinematography, and aerial shots, I transform ideas into striking visuals.
+            </p>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-zinc-400 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Nepali Hindu Wedding
+                        Ceremony</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-zinc-400 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Traditional Rituals
+                        &amp; Customs</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-zinc-400 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Cultural Attire &amp;
+                        Adornments</span>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     FULL-WIDTH IMAGE — bride on staircase
+══════════════════════════════════════════ -->
+    <section class="px-6 pb-5 reveal">
+        <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height:78vh;">
+            <img src="assets/images/wedding.jpg" alt="Bride on staircase" class="w-full h-full object-cover object-top">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center w-full px-6">
+                <p class="text-white text-sm leading-relaxed max-w-lg mx-auto"
+                    style="font-family:'Courier New',monospace; font-size:11px;">
+                    A story of tradition and elegance, captured through light, motion, and detail—where
+                    every frame reflects timeless beauty and cultural grace.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     SECTION 2 — White card LEFT + Image RIGHT
+══════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-10 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+        <!-- text card -->
+        <div class="bg-white rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+            <p class="pixel-font text-[9px] tracking-[0.3em] text-zinc-400 uppercase mb-5">The Moment</p>
+            <h2 class="pixel-font text-xl md:text-2xl text-zinc-900 leading-snug mb-7">
+                FRAMING MOMENTS<br>WHERE TRADITION<br>MEETS EMOTION
+            </h2>
+            <p class="text-zinc-600 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif">
+                Framing moments where tradition meets emotion—capturing not just visuals, but the
+                essence of culture, identity, and quiet confidence.
+            </p>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-zinc-400 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Gold Necklace &amp;
+                        Bangles (Pote)</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-zinc-400 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Red Silk Saree with
+                        Embroidery</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-zinc-400 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Sindoor &amp; Tikka
+                        Adornments</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- image card -->
+        <div class="split-img min-h-[520px] bg-zinc-900">
+            <img src="assets/images/portrait.avif" alt="Bride portrait">
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     QUOTE + ATTRIBUTION — dark card
+══════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 pb-5 reveal">
+        <div class="bg-zinc-900 rounded-[2.5rem] px-10 md:px-20 py-16 text-center border border-white/5">
+            <p class="pixel-font text-[9px] tracking-[0.4em] text-zinc-500 uppercase mb-6">The Rose Shrestha · Artiste
+            </p>
+            <blockquote class="text-white/90 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto"
+                style="font-family:'Georgia',serif; font-style:italic;">
+                "Draped in tradition, illuminated by artistry—this frame blends color, culture,
+                and composition into a striking visual narrative."
+            </blockquote>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     GALLERY GRID
+══════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-10 reveal">
+
+        <div class="mb-10 flex items-end justify-between">
+            <div>
+                <p class="pixel-font text-[9px] tracking-[0.3em] text-zinc-500 uppercase mb-3">Gallery</p>
+                <h2 class="pixel-font text-2xl md:text-3xl text-white">CAPTURED<br>MOMENTS</h2>
+            </div>
+            <p class="text-zinc-500 text-[10px] tracking-widest uppercase hidden md:block pixel-font">Wedding Collection
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+            <div class="gallery-item rounded-[1.5rem] overflow-hidden aspect-[3/4] bg-zinc-900">
+                <img src="assets/images/wedding.jpg" alt="W1" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-item rounded-[1.5rem] overflow-hidden aspect-[3/4] bg-zinc-900">
+                <img src="assets/images/ser2.avif" alt="W2" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-item rounded-[1.5rem] overflow-hidden aspect-[3/4] bg-zinc-900">
+                <img src="assets/images/portrait.avif" alt="W3" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-item rounded-[1.5rem] overflow-hidden col-span-2 aspect-video bg-zinc-900">
+                <img src="assets/images/wedding.jpg" alt="W4" class="w-full h-full object-cover">
+            </div>
+
+            <div class="gallery-item rounded-[1.5rem] overflow-hidden aspect-video bg-zinc-900">
+                <img src="assets/images/ser1.avif" alt="W5" class="w-full h-full object-cover">
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     MILESTONES + DETAIL CARDS
+══════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 pb-10 grid md:grid-cols-2 gap-6 reveal">
+
+        <!-- Milestones — exact same style as index.html -->
+        <div
+            class="bg-zinc-900 rounded-[60px] p-10 md:p-16 flex flex-col items-center space-y-10 border border-white/5 text-center">
+            <h2 class="pixel-font text-2xl md:text-3xl tracking-tighter text-white uppercase">Wedding Stats</h2>
+            <div class="w-full space-y-14 py-6">
+                <div class="group">
+                    <div
+                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                        12+</div>
+                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Weddings Covered</div>
+                    <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+                </div>
+                <div class="group">
+                    <div
+                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                        500+</div>
+                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Moments Captured</div>
+                    <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+                </div>
+                <div class="group">
+                    <div
+                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                        4+</div>
+                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Years of Experience</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stacked detail cards -->
+        <div class="flex flex-col gap-5">
+
+            <div class="bg-[#f2ede5] rounded-[2rem] p-8 flex-1">
+                <span class="text-2xl mb-4 block">🌺</span>
+                <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-400 uppercase mb-2">What We Offer</p>
+                <h3 class="pixel-font text-xs text-zinc-900 mb-3">FULL DAY COVERAGE</h3>
+                <p class="text-zinc-600 text-xs leading-relaxed" style="font-family:'Inter',sans-serif">
+                    From pre-bridal rituals at dawn to the final reception dance—every sacred
+                    moment documented with care, from Pani Puja to Sindoor ceremony.
+                </p>
+            </div>
+
+            <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex-1">
+                <span class="text-2xl mb-4 block">📸</span>
+                <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Deliverables</p>
+                <h3 class="pixel-font text-xs text-white mb-3">PHOTO + FILM</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif">
+                    High-resolution edited photographs, cinematic highlight reel, and raw footage
+                    delivered within 4–6 weeks in a private online gallery.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-[2rem] p-8 flex-1">
+                <span class="text-2xl mb-4 block">✈️</span>
+                <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-400 uppercase mb-2">Coverage</p>
+                <h3 class="pixel-font text-xs text-zinc-900 mb-3">KATHMANDU &amp; BEYOND</h3>
+                <p class="text-zinc-600 text-xs leading-relaxed" style="font-family:'Inter',sans-serif">
+                    Based in Kathmandu, available for destination weddings across Nepal, India,
+                    and South Asia. Travel fees apply for locations beyond the valley.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     FULL OVERLAY — Bride with side text
+══════════════════════════════════════════ -->
+    <section class="px-6 pb-6 reveal">
+        <div class="relative rounded-[2.5rem] overflow-hidden min-h-[72vh] flex items-center">
+
+            <img src="assets/images/ser2.avif" alt="Bride draped" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent"></div>
+
+            <div class="relative z-10 px-12 md:px-20 max-w-lg">
+                <p class="pixel-font text-[9px] tracking-[0.3em] text-white/50 uppercase mb-4">The Bride</p>
+                <h2 class="pixel-font text-2xl md:text-4xl text-white leading-snug mb-6">
+                    DRAPED IN<br>TRADITION
+                </h2>
+                <p class="text-white/70 text-sm leading-relaxed max-w-xs" style="font-family:'Inter',sans-serif">
+                    Draped in tradition, illuminated by artistry—this frame blends color, culture,
+                    and composition into a striking visual narrative.
+                </p>
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <p class="pixel-font text-[10px] tracking-[0.2em] text-white uppercase">THE ROSE SHRESTHA</p>
+                    <p class="text-white/40 text-xs mt-1" style="font-family:'Inter',sans-serif">Artiste</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     CONTACT — exact match to index.html
+══════════════════════════════════════════ -->
+    <section id="contact"
+        class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
+
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/contact.avif" alt="Contact bg"
+                class="w-full h-full object-cover grayscale opacity-60">
+            <div class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <div class="text-white space-y-8">
+                <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
+                    GET IN<br>TOUCH
+                </h1>
+                <p class="text-gray-300 max-w-sm text-sm md:text-base leading-relaxed font-light opacity-80"
+                    style="font-family:'Inter',sans-serif">
+                    Have a project in mind? Whether it's your wedding day or a special celebration,
+                    Rose Shrestha is here to capture your story with artistry and care.
+                </p>
+            </div>
+
+            <div
+                class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl">
+                <h2 class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase">
+                    Contact Us
+                </h2>
+
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">First
+                                name</label>
+                            <input type="text" placeholder="rose"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600 outline-none">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Last
+                                name</label>
+                            <input type="text" placeholder="shrestha"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Email</label>
+                            <input type="email" placeholder="roseshr12@gmail.com"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600 outline-none">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Phone
+                                no.</label>
+                            <input type="tel" placeholder="9860307418"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600 outline-none">
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase">
+                        Submit
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+     FOOTER — identical to index.html
+══════════════════════════════════════════ -->
+    <footer class="px-6 pb-24">
+
+        <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+
+            <div class="grid md:grid-cols-3 gap-16">
+
+                <!-- LEFT -->
+                <div>
+                    <p class="text-xs tracking-widest text-gray-400 mb-4">STAY CONNECTED.</p>
+                    <h2 class="text-3xl font-bold mb-4">THE ROSE SHRESTHA</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        I'm Rose Shrestha, a visual creator driven by storytelling and cinematic visuals.
+                    </p>
+                </div>
+
+                <!-- CENTER -->
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg">
+                    <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
+                    <a href="#" class="magnetic hover:text-gray-300 transition-colors">About</a>
+                    <div class="flex items-center gap-2 magnetic">
+                        Services <span class="text-xs text-gray-500">(06)</span>
+                    </div>
+                    <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="flex flex-col items-start md:items-end">
+                    <p class="mb-6 text-lg">Social Media</p>
+                    <div class="flex gap-6 text-xl">
+                        <i class="fab fa-x-twitter magnetic"></i>
+                        <i class="fab fa-instagram magnetic"></i>
+                        <i class="fab fa-linkedin magnetic"></i>
+                        <i class="fab fa-youtube magnetic"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BIG CENTER TEXT -->
+            <div class="text-center mt-20">
+                <h1 class="press-font text-6xl text-gray-300">Rose</h1>
+                <p class="text-sm text-gray-500 mt-6">©2026 The Rose Shrestha. All rights reserved.</p>
+            </div>
+
+        </div>
+
+        <!-- ── FLOATING NAV — identical to index.html ── -->
+        <div
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-50">
+            <div class="flex gap-6 text-sm text-gray-300">
+                <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
+                <a href="#" class="magnetic hover:text-white transition-colors">ABOUT</a>
+                <a href="#" class="magnetic hover:text-white transition-colors">SERVICES</a>
+            </div>
+            <a href="#contact"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+                CONTACT +
+            </a>
+        </div>
+
+    </footer>
+
+
+    <!-- ══════════════════════════════════════════ JS ══════════════════════════════════════════ -->
+    <script>
+        // ── Reveal on scroll ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('active');
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── Magnetic ──
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                const x = e.clientX - r.left - r.width / 2;
+                const y = e.clientY - r.top - r.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
+        });
+    </script>
+
+</body>
+
+</html>

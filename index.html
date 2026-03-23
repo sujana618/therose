@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .pixel-font {
+            font-family: 'Silkscreen', cursive;
+        }
+
+        .body-font {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+    <title>The Rose</title>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ================= GLASS ================= */
+        .glass {
+            backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* ================= CARD ================= */
+        .card {
+            position: relative;
+            height: 300px;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            transition: 0.4s;
+        }
+
+        .card:hover .overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ================= REVEAL ================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(80px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(.2, .65, .3, 1);
+        }
+
+        /* ================= INPUT ================= */
+        .input {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        /* ================= MAGNETIC ================= */
+        .magnetic {
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        /* ================= FLOAT NAV ================= */
+        .nav-float {
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+
+    <div class="max-w-[1200px] mx-auto px-6 py-16 space-y-32">
+
+        <!-- ================= HERO ================= -->
+        <section class="grid md:grid-cols-3 gap-10 items-center reveal">
+
+            <div>
+                <h1 class="text-5xl font-bold leading-tight">
+                    THE <br> ROSE
+                </h1>
+                <p class="text-xs text-gray-400 mt-2">ARTIST • PHOTOGRAPHER</p>
+            </div>
+
+            <div class="flex justify-center">
+                <img id="heroImg" src="assets/images/rose.avif"
+                    class="h-[420px] w-[300px] object-cover rounded-[30px]" />
+            </div>
+
+            <div>
+                <h3 class="text-sm tracking-widest mb-3">ABOUT THE ROSE</h3>
+                <p class="text-sm text-gray-400">
+                    Capturing cinematic stories through timeless photography and modern aesthetics.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-10">
+
+            <div
+                class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+                <img src="assets/images/wedding.jpg"
+                    class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div
+                        class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                        <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Wedding</span>
+                        <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Wedding</h3>
+                        <a href="wedding-details.html"
+                            class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                            Explore More <span class="text-xs">+</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+                <img src="assets/images/aerial.avif"
+                    class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0  transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div
+                        class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                        <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Aerial</span>
+                        <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Aerial</h3>
+                        <a href="aerial.html"
+                            class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                            Explore More <span class="text-xs">+</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+                <img src="assets/images/portrait.avif"
+                    class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div
+                        class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                        <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Portrait</span>
+                        <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Portrait</h3>
+                        <a href="portrait.html"
+                            class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                            Explore More <span class="text-xs">+</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+                <img src="assets/images/studio.avif"
+                    class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div
+                        class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                        <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Studio</span>
+                        <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Studio</h3>
+                        <a href="studio.html"
+                            class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                            Explore More <span class="text-xs">+</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= ABOUT ================= -->
+        <section id="about" class="relative py-12 px-4 md:px-10 overflow-hidden">
+            <div
+                class="relative w-full max-w-7xl mx-auto min-h-[600px] rounded-[60px] md:rounded-[100px] overflow-hidden flex items-center">
+
+                <div class="absolute inset-0 z-0">
+                    <img src="assets/images/about-bg.avif" alt="Background"
+                        class="w-full h-full object-cover grayscale">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/80"></div>
+                </div>
+
+                <div
+                    class="relative z-10 w-full px-8 md:px-20 flex flex-col md:flex-row items-center justify-between gap-10">
+
+                    <div class="w-full md:w-3/5">
+                        <div
+                            class="relative bg-gradient-to-br from-white/20 to-transparent backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-[40px] shadow-2xl flex items-center justify-between">
+                            <span class="pixel-font text-[10px] md:text-xs uppercase tracking-[0.4em] text-gray-200">
+                                About Me
+                            </span>
+                            <h2 class="pixel-font text-5xl md:text-8xl font-normal tracking-tighter text-white">
+                                ABOUT
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-2/5 text-left">
+                        <div class="max-w-md">
+                            <p class="text-gray-100 text-sm md:text-base leading-relaxed font-light">
+                                Hi, I'm <span class="text-white font-semibold">Rose Shrestha</span>—a photographer
+                                passionate
+                                about capturing meaningful moments with creativity and care. With 4 years of experience
+                                in
+                                portrait, landscape, and wedding photography, I blend technical skill with artistic
+                                vision
+                                to create timeless visuals. Based in Kathmandu, I'm here to turn your moments into
+                                lasting memories.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section id="services" class="py-12 px-4 md:px-10 bg-black overflow-hidden text-center">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div
+                    class="bg-zinc-900 rounded-[60px] md:rounded-[100px] p-10 md:p-16 flex flex-col items-center space-y-10 border border-white/5">
+                    <h2 class="pixel-font text-3xl md:text-4xl tracking-tighter text-white uppercase">Services</h2>
+
+                    <div class="relative w-full max-w-[280px] aspect-[4/5] cursor-pointer group" id="service-stack"
+                        onclick="cycleService()">
+                        <div
+                            class="absolute inset-0 bg-zinc-800 rounded-[2.5rem] rotate-[-6deg] scale-95 opacity-40 transition-all duration-500 group-hover:rotate-[-8deg]">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-zinc-700 rounded-[2.5rem] rotate-[6deg] scale-95 opacity-40 transition-all duration-500 group-hover:rotate-[8deg]">
+                        </div>
+
+                        <div
+                            class="relative h-full w-full bg-zinc-800 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+                            <img id="service-img" src="assets/images/ser2.avif" alt="Service"
+                                class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 opacity-100">
+
+                            <div
+                                class="absolute bottom-6 left-1/2 -translate-x-1/2 px-5 py-2 bg-white/90 backdrop-blur-md text-black rounded-full text-[10px] font-bold flex items-center gap-2 shadow-lg">
+                                <span id="service-id" class="opacity-40">01</span>
+                                <span id="service-name" class="uppercase tracking-widest">Wedding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs font-light">
+                        We craft digital experiences that elevate brands and engage audiences. Our services blend
+                        creativity with strategy.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-zinc-900 rounded-[60px] md:rounded-[100px] p-10 md:p-16 flex flex-col items-center space-y-12 border border-white/5">
+                    <h2 class="pixel-font text-3xl md:text-4xl tracking-tighter text-white uppercase">Milestones</h2>
+                    <div class="w-full space-y-16 py-10">
+                        <div class="group">
+                            <div
+                                class="pixel-font text-6xl md:text-8xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                                7+</div>
+                            <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Clients</div>
+                            <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="pixel-font text-6xl md:text-8xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                                24+</div>
+                            <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Projects Completed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <script>
+            const services = [
+                { id: '01', name: 'Wedding', img: 'assets/images/ser2.avif' },
+                { id: '02', name: 'Portrait', img: 'assets/images/ser1.avif' },
+                { id: '03', name: 'Studio', img: 'assets/images/studio.avif' }
+            ];
+
+            let currentIdx = 0;
+            const imgEl = document.getElementById('service-img');
+            const idEl = document.getElementById('service-id');
+            const nameEl = document.getElementById('service-name');
+
+            function cycleService() {
+                // Simple fade out effect
+                imgEl.style.opacity = '0.4';
+
+                setTimeout(() => {
+                    currentIdx = (currentIdx + 1) % services.length;
+                    const item = services[currentIdx];
+
+                    imgEl.src = item.img;
+                    idEl.innerText = item.id;
+                    nameEl.innerText = item.name;
+
+                    // Fade back in
+                    imgEl.style.opacity = '1';
+                }, 300);
+            }
+
+            // AUTO SWIPE: Set to 3000ms (3 seconds)
+            let autoSwap = setInterval(cycleService, 3000);
+
+            // Pause auto-swipe when user clicks (optional, for better UX)
+            document.getElementById('service-stack').addEventListener('click', () => {
+                clearInterval(autoSwap); // Stop the timer
+                autoSwap = setInterval(cycleService, 3000); // Restart the timer
+            });
+        </script>
+
+        <!-- ================= CONTACT ================= -->
+        <section class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12">
+
+            <div class="absolute inset-0 z-0">
+                <img src="assets/images/contact.avif" alt="Contact Background"
+                    class="w-full h-full object-cover grayscale opacity-60">
+                <div class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <div class="text-white space-y-8">
+                    <h1 class="pixel-font text-6xl md:text-[100px] leading-[0.9] tracking-tighter">
+                        GET IN<br>TOUCH
+                    </h1>
+                    <p class="text-gray-300 max-w-sm text-sm md:text-base leading-relaxed font-light opacity-80">
+                        Have a project in mind? Whether you're launching a brand, designing a product, or elevating your
+                        digital presence, we're here to bring your vision to life.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl">
+                    <h2 class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase">
+                        Contact Us
+                    </h2>
+
+                    <form class="space-y-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="space-y-3">
+                                <label
+                                    class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">First
+                                    name</label>
+                                <input type="text" placeholder="rose"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600">
+                            </div>
+                            <div class="space-y-3">
+                                <label
+                                    class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Last
+                                    name</label>
+                                <input type="text" placeholder="shrestha"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="space-y-3">
+                                <label
+                                    class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Email</label>
+                                <input type="email" placeholder="roseshr12@gmail.com"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600">
+                            </div>
+                            <div class="space-y-3">
+                                <label
+                                    class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Phone
+                                    no.</label>
+                                <input type="tel" placeholder="9860307418"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-white/20 transition-all placeholder:text-gray-600">
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="px-6 pb-24">
+
+        <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+
+            <!-- GRID -->
+            <div class="grid md:grid-cols-3 gap-16">
+
+                <!-- LEFT -->
+                <div class="reveal-item">
+                    <p class="text-xs tracking-widest text-gray-400 mb-4">
+                        STAY CONNECTED.
+                    </p>
+
+                    <h2 class="text-3xl font-bold mb-4">
+                        THE ROSE SHRESTHA
+                    </h2>
+
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        I’m Rose Shrestha, a visual creator driven by storytelling and cinematic visuals.
+                    </p>
+                </div>
+
+                <!-- CENTER -->
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg">
+
+                    <a class="magnetic">Home</a>
+                    <a class="magnetic">About</a>
+
+                    <div class="flex items-center gap-2 magnetic">
+                        Services <span class="text-xs text-gray-500">(06)</span>
+                    </div>
+
+                    <a class="magnetic">Contact us</a>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="flex flex-col items-start md:items-end">
+
+                    <p class="mb-6 text-lg">Social Media</p>
+
+                    <div class="flex gap-6 text-xl">
+
+                        <i class="fab fa-x-twitter magnetic"></i>
+                        <i class="fab fa-instagram magnetic"></i>
+                        <i class="fab fa-linkedin magnetic"></i>
+                        <i class="fab fa-youtube magnetic"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CENTER BIG TEXT -->
+            <div class="text-center mt-20">
+                <h1 class="font-['Press_Start_2P'] text-6xl text-gray-300 glow">
+                    Rose
+                </h1>
+
+                <p class="text-sm text-gray-500 mt-6">
+                    ©2026 The Rose Shrestha. All rights reserved.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- FLOATING NAV -->
+        <div
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float">
+
+            <div class="flex gap-6 text-sm text-gray-300">
+                <a class="magnetic">HOME</a>
+                <a class="magnetic">ABOUT</a>
+                <a class="magnetic">SERVICES</a>
+            </div>
+
+            <button class="bg-white text-black px-6 py-2 rounded-full magnetic">
+                CONTACT +
+            </button>
+
+        </div>
+
+    </footer>
+
+    <!-- ================= JS ================= -->
+    <script>
+
+        // reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('active'); }
+            });
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // parallax
+        const hero = document.getElementById('heroImg');
+        window.addEventListener('mousemove', e => {
+            let x = (e.clientX / window.innerWidth - 0.5) * 20;
+            let y = (e.clientY / window.innerHeight - 0.5) * 20;
+            hero.style.transform = `translate(${x}px,${y}px)`;
+        });
+
+        // magnetic
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                let r = el.getBoundingClientRect();
+                let x = e.clientX - r.left - r.width / 2;
+                let y = e.clientY - r.top - r.height / 2;
+                el.style.transform = `translate(${x * 0.3}px,${y * 0.3}px)`;
+            });
+            el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
+        });
+
+    </script>
+
+</body>
+
+</html>

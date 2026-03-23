@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Cursive script font for the "The rose Shrestha" brand title -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>Aerial — The Rose</title>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .pixel-font {
+            font-family: 'Silkscreen', cursive;
+        }
+
+        .press-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* ── Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(.2, .65, .3, 1);
+        }
+
+        /* ── Magnetic ── */
+        .magnetic {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        /* ── Nav float ── */
+        .nav-float {
+            transition: 0.3s;
+        }
+
+        /* ── Split image hover ── */
+        .split-img {
+            border-radius: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .split-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .split-img:hover img {
+            transform: scale(1.06);
+        }
+
+        /* ── Gallery hover ── */
+        .gallery-item {
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s;
+            filter: grayscale(15%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        /* ── Focus ── */
+        input:focus,
+        textarea:focus {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            outline: none;
+        }
+
+        input,
+        textarea {
+            outline: none;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        /* ── Parallax hero ── */
+        .hero-parallax {
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        /* ── Altitude badge ── */
+        @keyframes floatY {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .float-badge {
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        /* ── Horizon scan line ── */
+        @keyframes scanRight {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(400%);
+            }
+        }
+
+        .scan-line {
+            animation: scanRight 3s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[#111] overflow-x-hidden">
+
+
+    <!-- ══════════════════════════════════════════════════
+     HERO — Full-bleed aerial landscape, rounded bottom
+══════════════════════════════════════════════════ -->
+    <section class="relative w-full overflow-hidden rounded-b-[2.5rem] reveal" style="height: 55vh; min-height: 380px;">
+
+        <!-- aerial landscape image -->
+        <img src="assets/images/aerial.avif" alt="Aerial landscape"
+            class="hero-parallax absolute inset-0 w-full h-full object-cover object-center">
+
+        <!-- subtle dark vignette at edges -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/25 pointer-events-none">
+        </div>
+
+        <!-- top-left back link -->
+        <a href="index.html"
+            class="absolute top-6 left-8 z-10 flex items-center gap-2 text-white/70 hover:text-white transition-colors pixel-font text-[9px] tracking-widest uppercase">
+            <span>←</span> Back
+        </a>
+
+        <!-- floating altitude badge -->
+        <div
+            class="float-badge absolute top-6 right-8 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-2 text-center">
+            <p class="pixel-font text-[8px] text-white/60 uppercase tracking-widest">Altitude</p>
+            <p class="pixel-font text-sm text-white">2,551 m</p>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     BRAND TITLE — "The rose Shrestha ♡ PHOTOGRAPHY"
+     Centered between hero and first split section
+══════════════════════════════════════════════════ -->
+    <div class="text-center py-10 reveal">
+        <h2 class="script-font text-4xl md:text-5xl text-[#111]">The rose Shrestha ♡</h2>
+        <p class="text-[10px] tracking-[0.45em] text-gray-400 mt-2 uppercase"
+            style="font-family:'Space Grotesk',sans-serif;">Photography</p>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════
+     SECTION 1 — White card LEFT + Aerial image RIGHT
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 pb-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+        <!-- white text card -->
+        <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-10 md:p-14 flex flex-col justify-center">
+            <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-5">The Perspective</p>
+            <h2 class="pixel-font text-xl md:text-2xl text-[#111] leading-snug mb-7">
+                ABOVE THE<br>WORLD,<br>BEYOND LIMITS
+            </h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif;">
+                Through a balance of artistry and precision, I create visuals that capture
+                emotion, and perspective—turning everyday moments into compelling visual stories.
+            </p>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Drone
+                        Cinematography</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">Landscape &amp;
+                        Cityscape</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="w-6 h-[1px] bg-gray-300 flex-shrink-0"></span>
+                    <span class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest">4K Resolution
+                        Footage</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- aerial teal/sky image -->
+        <div class="split-img min-h-[480px] bg-gray-200">
+            <img src="assets/images/aerial.avif" alt="Aerial sky view">
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     SECTION 2 — Top-down road image LEFT + White card RIGHT
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+
+        <!-- aerial road/forest image -->
+        <div class="split-img min-h-[480px] bg-gray-200">
+            <img src="assets/images/aerial.avif" alt="Aerial road through forest" style="object-position: center 60%;">
+        </div>
+
+        <!-- white text card -->
+        <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-10 md:p-14 flex flex-col justify-center">
+            <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-5">The View</p>
+            <h2 class="pixel-font text-xl md:text-2xl text-[#111] leading-snug mb-7">
+                STEP INTO A<br>WORLD OF<br>REFINED VISUALS
+            </h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6" style="font-family:'Inter',sans-serif;">
+                Step into a world of refined visuals, where composition, light, and storytelling
+                come together to create images that feel immersive, intentional, and timeless.
+            </p>
+            <div class="border-t border-gray-100 pt-6 mt-2">
+                <p class="pixel-font text-[10px] tracking-[0.2em] text-[#111] uppercase mb-1">THE ROSE SHRESTHA</p>
+                <p class="text-gray-400 text-xs" style="font-family:'Inter',sans-serif;">Artist</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     FULL-WIDTH PANORAMIC — wide aerial shot
+══════════════════════════════════════════════════ -->
+    <section class="px-6 py-5 reveal">
+        <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 55vh;">
+            <img src="assets/images/aerial.avif" alt="Aerial panoramic"
+                class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+            <!-- scan line effect -->
+            <div class="absolute top-0 left-0 w-full h-[1px] bg-white/20 overflow-hidden">
+                <div
+                    class="scan-line absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-white/40 to-transparent">
+                </div>
+            </div>
+
+            <!-- bottom caption -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center px-6">
+                <p class="text-white/80 text-xs leading-relaxed max-w-md mx-auto"
+                    style="font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.05em;">
+                    Kathmandu Valley · Nepal · Shot at 2,551 m altitude
+                </p>
+            </div>
+
+            <!-- coordinates badge -->
+            <div
+                class="absolute bottom-8 right-8 bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-2">
+                <p class="pixel-font text-[8px] text-white/50 uppercase tracking-widest">Coordinates</p>
+                <p class="pixel-font text-[10px] text-white">27.7172° N, 85.3240° E</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     QUOTE STRIP — light bg
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-5 reveal">
+        <div class="bg-gray-50 rounded-[2.5rem] px-10 md:px-20 py-16 text-center border border-gray-100">
+            <p class="pixel-font text-[9px] tracking-[0.4em] text-gray-400 uppercase mb-6">The Rose Shrestha · Artiste
+            </p>
+            <blockquote class="text-[#111] text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto"
+                style="font-family:'Georgia',serif; font-style:italic;">
+                "Step into a world of refined visuals, where composition, light, and storytelling
+                come together to create images that feel immersive, intentional, and timeless."
+            </blockquote>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     GALLERY GRID
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-10 reveal">
+
+        <div class="mb-10 flex items-end justify-between">
+            <div>
+                <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-3">Gallery</p>
+                <h2 class="pixel-font text-2xl md:text-3xl text-[#111]">FROM THE<br>SKY DOWN</h2>
+            </div>
+            <p class="pixel-font text-[9px] text-gray-400 uppercase tracking-widest hidden md:block">Aerial Collection
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+            <div class="gallery-item aspect-[3/4] bg-gray-200">
+                <img src="assets/images/aerial.avif" alt="A1" style="object-position: 20% center;">
+            </div>
+
+            <div class="gallery-item aspect-[3/4] bg-gray-200">
+                <img src="assets/images/aerial.avif" alt="A2" style="object-position: 80% center;">
+            </div>
+
+            <div class="gallery-item aspect-[3/4] bg-gray-200">
+                <img src="assets/images/aerial.avif" alt="A3" style="object-position: 50% 30%;">
+            </div>
+
+            <div class="gallery-item col-span-2 aspect-video bg-gray-200">
+                <img src="assets/images/aerial.avif" alt="A4 wide" style="object-position: center 40%;">
+            </div>
+
+            <div class="gallery-item aspect-video bg-gray-200">
+                <img src="assets/images/aerial.avif" alt="A5" style="object-position: 60% center;">
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     STATS + DETAIL CARDS — mirrors index.html Milestones
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 pb-10 grid md:grid-cols-2 gap-6 reveal">
+
+        <!-- Milestones card — identical style to index.html -->
+        <div
+            class="bg-zinc-900 rounded-[60px] p-10 md:p-16 flex flex-col items-center space-y-10 border border-white/5 text-center">
+            <h2 class="pixel-font text-2xl md:text-3xl tracking-tighter text-white uppercase">Aerial Stats</h2>
+            <div class="w-full space-y-14 py-6">
+                <div class="group">
+                    <div
+                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                        20+</div>
+                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Aerial Shoots</div>
+                    <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+                </div>
+                <div class="group">
+                    <div
+                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                        4K</div>
+                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Resolution Output</div>
+                    <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
+                </div>
+                <div class="group">
+                    <div
+                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
+                        3+</div>
+                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Years Flying</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stacked detail cards -->
+        <div class="flex flex-col gap-5">
+
+            <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8 flex-1">
+                <span class="text-2xl mb-4 block">🚁</span>
+                <p class="pixel-font text-[9px] tracking-[0.25em] text-gray-400 uppercase mb-2">Equipment</p>
+                <h3 class="pixel-font text-xs text-[#111] mb-3">DRONE FLEET</h3>
+                <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
+                    DJI Mavic 3 Pro & Air 3 with 4K/60fps capability, 3-axis gimbal stabilization,
+                    and obstacle avoidance for smooth, cinema-quality footage.
+                </p>
+            </div>
+
+            <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex-1">
+                <span class="text-2xl mb-4 block">🌄</span>
+                <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Locations</p>
+                <h3 class="pixel-font text-xs text-white mb-3">NEPAL &amp; BEYOND</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
+                    Kathmandu Valley, Pokhara, Chitwan, Mustang, and Himalayan regions.
+                    Special permits secured for restricted airspace zones.
+                </p>
+            </div>
+
+            <div class="bg-white border border-gray-100 shadow-sm rounded-[2rem] p-8 flex-1">
+                <span class="text-2xl mb-4 block">🎬</span>
+                <p class="pixel-font text-[9px] tracking-[0.25em] text-gray-400 uppercase mb-2">Deliverables</p>
+                <h3 class="pixel-font text-xs text-[#111] mb-3">PHOTO + VIDEO</h3>
+                <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
+                    Color-graded stills, cinematic video reels with licensed music, and
+                    raw RAW files—delivered within 7 days via private gallery.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     FULL OVERLAY — image with left text panel (like wedding page)
+══════════════════════════════════════════════════ -->
+    <section class="px-6 pb-6 reveal">
+        <div class="relative rounded-[2.5rem] overflow-hidden min-h-[68vh] flex items-center">
+
+            <img src="assets/images/aerial.avif" alt="Aerial view overlay"
+                class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+
+            <div class="relative z-10 px-12 md:px-20 max-w-lg">
+                <p class="pixel-font text-[9px] tracking-[0.3em] text-white/50 uppercase mb-4">The Shot</p>
+                <h2 class="pixel-font text-2xl md:text-4xl text-white leading-snug mb-6">
+                    EVERY FRAME<br>TELLS A<br>STORY
+                </h2>
+                <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-8" style="font-family:'Inter',sans-serif;">
+                    From mountain ridgelines to winding river valleys—each aerial photograph
+                    is a careful composition of light, altitude, and timing.
+                </p>
+                <div class="pt-6 border-t border-white/10">
+                    <p class="pixel-font text-[10px] tracking-[0.2em] text-white uppercase">THE ROSE SHRESTHA</p>
+                    <p class="text-white/40 text-xs mt-1" style="font-family:'Inter',sans-serif;">Artiste · Drone Pilot
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     CONTACT — dark with starry/concert bg (from video frame 3)
+══════════════════════════════════════════════════ -->
+    <section id="contact"
+        class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
+
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/contact.avif" alt="Contact background"
+                class="w-full h-full object-cover grayscale opacity-60">
+            <div class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <div class="text-white space-y-8">
+                <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
+                    GET IN<br>TOUCH
+                </h1>
+                <p class="text-gray-300 max-w-sm text-sm md:text-base leading-relaxed font-light opacity-80"
+                    style="font-family:'Inter',sans-serif;">
+                    Have a project in mind? Whether you're launching a brand, designing a product,
+                    or elevating your digital presence, we're here to bring your vision to life.
+                </p>
+            </div>
+
+            <div
+                class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl">
+                <h2 class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase">
+                    Contact Us
+                </h2>
+
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">First
+                                name</label>
+                            <input type="text" placeholder="rose"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Last
+                                name</label>
+                            <input type="text" placeholder="shrestha"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Email</label>
+                            <input type="email" placeholder="roseshr12@gmail.com"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Phone
+                                no.</label>
+                            <input type="tel" placeholder="9860307418"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase">
+                        Submit
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     FOOTER — identical to index.html
+══════════════════════════════════════════════════ -->
+    <footer class="px-6 pb-24 bg-white">
+
+        <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+
+            <div class="grid md:grid-cols-3 gap-16">
+
+                <!-- LEFT -->
+                <div>
+                    <p class="text-xs tracking-widest text-gray-400 mb-4">STAY CONNECTED.</p>
+                    <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        I'm Rose Shrestha, a visual creator driven by storytelling and cinematic visuals.
+                    </p>
+                </div>
+
+                <!-- CENTER -->
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
+                    <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
+                    <a href="#" class="magnetic hover:text-gray-300 transition-colors">About</a>
+                    <div class="flex items-center gap-2 magnetic">
+                        Services <span class="text-xs text-gray-500">(06)</span>
+                    </div>
+                    <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="flex flex-col items-start md:items-end text-white">
+                    <p class="mb-6 text-lg">Social Media</p>
+                    <div class="flex gap-6 text-xl">
+                        <i class="fab fa-x-twitter magnetic"></i>
+                        <i class="fab fa-instagram magnetic"></i>
+                        <i class="fab fa-linkedin magnetic"></i>
+                        <i class="fab fa-youtube magnetic"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CENTER BIG TEXT -->
+            <div class="text-center mt-20">
+                <h1 class="press-font text-6xl text-gray-300">Rose</h1>
+                <p class="text-sm text-gray-500 mt-6">©2026 The Rose Shrestha. All rights reserved.</p>
+            </div>
+
+        </div>
+
+        <!-- ── FLOATING NAV — identical to index.html ── -->
+        <div
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-50">
+            <div class="flex gap-6 text-sm text-gray-300">
+                <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
+                <a href="#" class="magnetic hover:text-white transition-colors">ABOUT</a>
+                <a href="#" class="magnetic hover:text-white transition-colors">SERVICES</a>
+            </div>
+            <a href="#contact"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+                CONTACT +
+            </a>
+        </div>
+
+    </footer>
+
+
+    <!-- ══════════════════════════════════════════════════ JS ══════════════════════════════════════════════════ -->
+    <script>
+        // ── Reveal on scroll ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('active');
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── Magnetic ──
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                const x = e.clientX - r.left - r.width / 2;
+                const y = e.clientY - r.top - r.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
+        });
+
+        // ── Hero parallax on scroll ──
+        const heroImg = document.querySelector('.hero-parallax');
+        window.addEventListener('scroll', () => {
+            if (heroImg) {
+                const scrollY = window.scrollY;
+                heroImg.style.transform = `translateY(${scrollY * 0.25}px)`;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
