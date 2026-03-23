@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <title>About — The Rose</title>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .pixel-font {
+            font-family: 'Silkscreen', cursive;
+        }
+
+        .press-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        /* ── Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(.2, .65, .3, 1);
+        }
+
+        /* ── Magnetic ── */
+        .magnetic {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        /* ── Nav float ── */
+        .nav-float {
+            transition: 0.3s;
+        }
+
+        /* ── Focus ── */
+        input:focus,
+        textarea:focus {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            outline: none;
+        }
+
+        input,
+        textarea {
+            outline: none;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        /* ── Hero portrait fade-up ── */
+        @keyframes heroUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-portrait {
+            animation: heroUp 1.2s cubic-bezier(.2, .65, .3, 1) forwards 0.2s;
+            opacity: 0;
+        }
+
+        /* ── Big blurred ABOUT behind portrait ── */
+        .about-bg-text {
+            font-family: 'Silkscreen', cursive;
+            font-size: clamp(100px, 22vw, 280px);
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* ── Glass card ── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── Stat number pixel font ── */
+        .stat-num {
+            font-family: 'Silkscreen', cursive;
+            color: rgba(255, 255, 255, 0.18);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── Client logo card hover ── */
+        .logo-card {
+            transition: background 0.3s, border-color 0.3s, transform 0.3s;
+        }
+
+        .logo-card:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            transform: translateY(-3px);
+        }
+
+        /* ── Team card hover ── */
+        .team-card img {
+            transition: transform 0.6s ease, filter 0.4s;
+            filter: grayscale(100%);
+        }
+
+        .team-card:hover img {
+            transform: scale(1.04);
+            filter: grayscale(60%);
+        }
+
+        /* ── Counter ── */
+        .counter-val {
+            font-family: 'Silkscreen', cursive;
+        }
+
+        /* ── Marquee ── */
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-track {
+            animation: marquee 20s linear infinite;
+            display: flex;
+            width: max-content;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+
+
+    <!-- ══════════════════════════════════════════════════
+     HERO — White bg section, centered B&W portrait
+     Big blurred ABOUT text bottom-left
+     Courier bio text top-right (Frame 1)
+══════════════════════════════════════════════════ -->
+    <section class="relative w-full bg-[#0a0a0a] overflow-hidden" style="min-height: 100vh;">
+
+        <!-- giant ghost ABOUT text — bottom left -->
+        <div class="absolute bottom-0 left-0 leading-none select-none pointer-events-none overflow-hidden">
+            <p class="about-bg-text">ABOUT</p>
+        </div>
+
+        <!-- top-right: Courier bio text (Frame 1) -->
+        <div class="absolute top-1/3 right-8 md:right-14 z-10 max-w-[260px] hidden md:block">
+            <p class="text-white/40 leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
+                Hi, I'm Rose Shrestha—a photographer<br>
+                passionate about capturing meaningful<br>
+                moments with creativity and care.<br>
+                With 4 years of experience in portrait,<br>
+                landscape, and wedding photography,<br>
+                I blend technical skill with artistic<br>
+                vision to create timeless visuals.<br>
+                Based in Kathmandu, I'm here to turn<br>
+                your moments into lasting memories.
+            </p>
+        </div>
+
+        <!-- centered B&W portrait — exactly Frame 1 -->
+        <div class="hero-portrait relative z-10 flex justify-center items-end h-full pt-20" style="min-height: 100vh;">
+            <img src="assets/images/rose.avif" alt="Rose Shrestha" class="object-cover object-top"
+                style="height: 88vh; max-width: 420px; width: 100%; filter: grayscale(100%) contrast(1.05);">
+        </div>
+
+        <!-- floating label bottom-left (frame 1 — small "ABOUT" label under big text) -->
+        <div class="absolute bottom-8 left-8 z-20">
+            <p class="pixel-font text-[9px] text-white/30 tracking-[0.3em] uppercase">About</p>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     ABOUT CARD SECTION — Full-bleed dark portrait BG
+     Centered glass card: ABOUT ME | ABOUT | bio (Frame 2)
+══════════════════════════════════════════════════ -->
+    <section class="relative w-full overflow-hidden reveal" style="min-height: 80vh;">
+
+        <!-- full-bleed B&W close-up (camera/bokeh bg) -->
+        <img src="assets/images/about-bg.avif" alt="About background"
+            class="absolute inset-0 w-full h-full object-cover" style="filter: grayscale(100%) brightness(0.55);">
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <!-- centered glass card — exactly Frame 2 -->
+        <div class="relative z-10 flex items-center justify-center px-6 py-20" style="min-height: 80vh;">
+            <div
+                class="glass-card rounded-[2rem] w-full max-w-3xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center">
+
+                <!-- left: label + big ABOUT -->
+                <div>
+                    <p class="pixel-font text-[9px] tracking-[0.35em] text-white/40 uppercase mb-6">About Me</p>
+                    <h2 class="pixel-font text-5xl md:text-7xl text-white leading-none">ABOUT</h2>
+                </div>
+
+                <!-- right: bio text -->
+                <div>
+                    <p class="text-white/70 text-sm leading-[1.95]" style="font-family:'Inter',sans-serif;">
+                        Hi, I'm Rose Shrestha—a photographer passionate about capturing meaningful
+                        moments with creativity and care. With 4 years of experience in portrait,
+                        landscape, and wedding photography, I blend technical skill with artistic
+                        vision to create timeless visuals. Based in Kathmandu, I'm here to turn
+                        your moments into lasting memories.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     MILESTONES — Two big cards side by side (Frames 3–4)
+     LEFT: MILESTONES heading + huge stat numbers + body text
+     RIGHT: stacked smaller stat cards
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 py-10 grid md:grid-cols-2 gap-5 reveal">
+
+        <!-- LEFT: Main milestones card -->
+        <div
+            class="bg-zinc-900 border border-white/5 rounded-[2.5rem] p-10 md:p-14 flex flex-col justify-between min-h-[520px]">
+
+            <div>
+                <p class="pixel-font text-[9px] tracking-[0.35em] text-zinc-500 uppercase mb-6">Stats</p>
+                <h2 class="pixel-font text-2xl md:text-3xl text-white mb-14">MILESTONES</h2>
+            </div>
+
+            <!-- giant stat numbers — pixel font, muted like the video -->
+            <div class="space-y-8">
+                <div>
+                    <p class="counter-val text-7xl md:text-8xl font-normal text-white/20 leading-none pixel-font"
+                        data-target="10">0+</p>
+                </div>
+                <div>
+                    <p class="counter-val text-7xl md:text-8xl font-normal text-white/20 leading-none pixel-font"
+                        data-target="29">0+</p>
+                </div>
+            </div>
+
+            <p class="text-zinc-500 text-sm leading-relaxed mt-10 text-center" style="font-family:'Inter',sans-serif;">
+                We take pride in delivering 47 projects with precision, creativity, and efficiency.
+                Each project showcases our expertise and dedication to excellence.
+            </p>
+
+        </div>
+
+        <!-- RIGHT: stacked smaller stat cards -->
+        <div class="flex flex-col gap-5">
+
+            <div class="bg-zinc-900 border border-white/5 rounded-[2.5rem] p-10 flex-1 flex flex-col justify-between">
+                <div></div>
+                <div class="text-center">
+                    <p class="pixel-font text-6xl md:text-7xl text-white/20 leading-none mb-4">7+</p>
+                    <p class="text-zinc-500 text-sm text-center" style="font-family:'Inter',sans-serif;">Extensive
+                        Industry<br>Experience</p>
+                </div>
+                <div></div>
+            </div>
+
+            <div class="bg-zinc-900 border border-white/5 rounded-[2.5rem] p-10 flex-1 flex flex-col justify-between">
+                <div></div>
+                <div class="text-center">
+                    <p class="pixel-font text-6xl md:text-7xl text-white/20 leading-none mb-4">22+</p>
+                    <p class="text-zinc-500 text-sm text-center" style="font-family:'Inter',sans-serif;">Satisfied
+                        Clients</p>
+                </div>
+                <div></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     CLIENTS — Big CLIENTS heading + 3×2 logo grid (Frames 5–6)
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 pb-10 reveal">
+
+        <!-- header row: CLIENTS left + description right -->
+        <div class="flex items-start justify-between mb-10 gap-6">
+            <h2 class="pixel-font text-5xl md:text-7xl text-white leading-none">CLIENTS</h2>
+            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs text-right hidden md:block"
+                style="font-family:'Inter',sans-serif;">
+                We collaborate with industry leaders, innovative startups, and global enterprises
+                to deliver exceptional solutions. Our clients trust us to bring their vision to
+                life with precision, creativity, and expertise.
+            </p>
+        </div>
+
+        <!-- 3×2 logo grid — dark zinc cards, logos centered -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+            <!-- FlkZone -->
+            <div
+                class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
+                <div class="text-center">
+                    <div
+                        class="w-14 h-14 rounded-full bg-zinc-700 border-2 border-zinc-600 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">🍴</span>
+                    </div>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">FlkZone</p>
+                    <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Bakery &amp; Cafe
+                    </p>
+                </div>
+            </div>
+
+            <!-- Framely / Green F logo -->
+            <div
+                class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
+                <div class="text-center">
+                    <div class="w-14 h-14 rounded-full bg-emerald-600 flex items-center justify-center mx-auto mb-3">
+                        <span class="pixel-font text-white text-xl font-bold">F</span>
+                    </div>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Framely</p>
+                    <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Creative Studio
+                    </p>
+                </div>
+            </div>
+
+            <!-- MoonLight -->
+            <div
+                class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
+                <div class="text-center">
+                    <div class="w-14 h-14 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-3xl font-light text-sky-400"
+                            style="font-family:'Georgia',serif; font-style:italic;">M</span>
+                    </div>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">MoonLight</p>
+                    <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Photography</p>
+                </div>
+            </div>
+
+            <!-- Drone Guru -->
+            <div
+                class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
+                <div class="text-center">
+                    <div class="w-14 h-14 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl font-bold" style="color:#e67e22;">D</span><span
+                            class="text-2xl font-bold text-green-500">G</span>
+                    </div>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Drone Guru</p>
+                    <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Aerial Services
+                    </p>
+                </div>
+            </div>
+
+            <!-- The Power Hub -->
+            <div
+                class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
+                <div class="text-center">
+                    <div
+                        class="w-14 h-14 rounded-full border-2 border-yellow-500 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-yellow-500 text-lg font-bold pixel-font">TPH</span>
+                    </div>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">The Power Hub</p>
+                    <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Energy Solutions
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tranquility -->
+            <div
+                class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
+                <div class="text-center">
+                    <div class="w-14 h-14 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-zinc-300 text-sm tracking-widest" style="font-family:'Georgia',serif;">✦ T
+                            ✦</span>
+                    </div>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Tranquility</p>
+                    <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Wellness Brand</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     TEAM — TEAM heading + 3-col B&W portrait cards (Frames 7–8)
+     Each card: full-bleed B&W photo + pixel name overlay at bottom
+══════════════════════════════════════════════════ -->
+    <section class="max-w-[1300px] mx-auto px-6 pb-10 reveal">
+
+        <!-- header row -->
+        <div class="flex items-start justify-between mb-10 gap-6">
+            <h2 class="pixel-font text-5xl md:text-7xl text-white leading-none">TEAM</h2>
+            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs text-right hidden md:block"
+                style="font-family:'Inter',sans-serif;">
+                Explore in-depth insights, industry trends, and expert perspectives.
+                Our journals offer valuable knowledge to inspire innovation and drive success.
+            </p>
+        </div>
+
+        <!-- 3-col team cards — B&W photo fills entire rounded card, name at bottom -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+            <!-- Rose Shrestha -->
+            <div class="team-card relative rounded-[2rem] overflow-hidden bg-zinc-900 cursor-pointer"
+                style="aspect-ratio: 3/4;">
+                <img src="assets/images/rose.avif" alt="Rose Shrestha"
+                    class="absolute inset-0 w-full h-full object-cover object-top">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <p class="pixel-font text-sm text-white tracking-wide">ROSE SHRESTHA</p>
+                    <p class="pixel-font text-[9px] text-white/40 tracking-widest uppercase mt-1">Founder · Photographer
+                    </p>
+                </div>
+            </div>
+
+            <!-- Alex Shrestha -->
+            <div class="team-card relative rounded-[2rem] overflow-hidden bg-zinc-900 cursor-pointer"
+                style="aspect-ratio: 3/4;">
+                <img src="assets/images/portrait.avif" alt="Alex Shrestha"
+                    class="absolute inset-0 w-full h-full object-cover object-top">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <p class="pixel-font text-sm text-white tracking-wide">ALEX SHRESTHA</p>
+                    <p class="pixel-font text-[9px] text-white/40 tracking-widest uppercase mt-1">Cinematographer</p>
+                </div>
+            </div>
+
+            <!-- Nayan Shrestha -->
+            <div class="team-card relative rounded-[2rem] overflow-hidden bg-zinc-900 cursor-pointer"
+                style="aspect-ratio: 3/4;">
+                <img src="assets/images/studio.avif" alt="Nayan Shrestha"
+                    class="absolute inset-0 w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <p class="pixel-font text-sm text-white tracking-wide">NAYAN SHRESTHA</p>
+                    <p class="pixel-font text-[9px] text-white/40 tracking-widest uppercase mt-1">Drone Pilot</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     MARQUEE STRIP
+══════════════════════════════════════════════════ -->
+    <div class="w-full overflow-hidden border-y border-white/5 py-4 bg-[#0f0f0f] reveal">
+        <div class="marquee-track">
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Photography</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Cinematography</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Aerial Shots</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Studio Sessions</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Wedding Coverage</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Portrait
+                Direction</span>
+            <span class="text-white/10 mx-4">·</span>
+            <!-- duplicate for seamless loop -->
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Photography</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Cinematography</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Aerial Shots</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Studio Sessions</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Wedding Coverage</span>
+            <span class="text-white/10 mx-4">·</span>
+            <span class="pixel-font text-[10px] text-white/20 uppercase tracking-[0.4em] mx-10">Portrait
+                Direction</span>
+            <span class="text-white/10 mx-4">·</span>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════
+     CONTACT — dark starfield / galaxy bg (Frame 9)
+══════════════════════════════════════════════════ -->
+    <section id="contact"
+        class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
+
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/contact.avif" alt="Contact background"
+                class="w-full h-full object-cover grayscale opacity-60">
+            <div class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <div class="text-white space-y-8">
+                <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
+                    GET IN<br>TOUCH
+                </h1>
+                <p class="text-gray-300 max-w-sm text-sm md:text-base leading-relaxed font-light opacity-80"
+                    style="font-family:'Inter',sans-serif;">
+                    Have a project in mind? Whether you're launching a brand, designing a product,
+                    or elevating your digital presence, we're here to bring your vision to life.
+                </p>
+            </div>
+
+            <div
+                class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl">
+                <h2 class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase">
+                    Contact Us
+                </h2>
+
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">First
+                                name</label>
+                            <input type="text" placeholder="rose"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Last
+                                name</label>
+                            <input type="text" placeholder="shrestha"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Email</label>
+                            <input type="email" placeholder="roseshr12@gmail.com"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Phone
+                                no.</label>
+                            <input type="tel" placeholder="9860307418"
+                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase">
+                        Submit
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     FOOTER — identical to index.html (Frame 9)
+══════════════════════════════════════════════════ -->
+    <footer class="px-6 pb-24 bg-[#0a0a0a]">
+
+        <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+
+            <div class="grid md:grid-cols-3 gap-16">
+
+                <div>
+                    <p class="text-xs tracking-widest text-gray-400 mb-4">STAY CONNECTED.</p>
+                    <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        I'm Rose Shrestha, a visual creator driven by the art of storytelling.
+                        Through design, photography, cinematography, and aerial shots, I transform
+                        ideas into striking visuals that connect, engage, and leave an impression.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
+                    <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
+                    <a href="about.html" class="magnetic text-white">About</a>
+                    <div class="flex items-center gap-2 magnetic hover:text-gray-300 transition-colors cursor-pointer">
+                        Services <span class="text-xs text-gray-500">(06)</span>
+                    </div>
+                    <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+                </div>
+
+                <div class="flex flex-col items-start md:items-end text-white">
+                    <p class="mb-6 text-lg">Social Media</p>
+                    <div class="flex gap-6 text-xl">
+                        <i class="fab fa-x-twitter magnetic"></i>
+                        <i class="fab fa-instagram magnetic"></i>
+                        <i class="fab fa-linkedin magnetic"></i>
+                        <i class="fab fa-youtube magnetic"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-20">
+                <h1 class="press-font text-6xl text-gray-300">Rose</h1>
+                <p class="text-sm text-gray-500 mt-6">©2026 The Rose Shrestha. All right reserved.</p>
+            </div>
+
+        </div>
+
+        <!-- ══ FLOATING NAV — all links clickable ══ -->
+        <div
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-50 border border-white/5">
+            <div class="flex gap-6 text-sm text-gray-300">
+                <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
+                <a href="about.html" class="magnetic text-white">ABOUT</a>
+                <a href="index.html#services" class="magnetic hover:text-white transition-colors">SERVICES</a>
+            </div>
+            <a href="#contact"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+                CONTACT +
+            </a>
+        </div>
+
+    </footer>
+
+
+    <!-- ══════════════════════════════════════════════════ JS ══════════════════════════════════════════════════ -->
+    <script>
+        // ── Reveal ──
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.07 });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // ── Magnetic ──
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.3}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
+            });
+            el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
+        });
+
+        // ── Counter animation for milestone numbers ──
+        const counted = new Set();
+        const countObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                e.target.querySelectorAll('[data-target]').forEach(el => {
+                    if (counted.has(el)) return;
+                    counted.add(el);
+                    const target = +el.dataset.target;
+                    let cur = 0;
+                    const inc = Math.ceil(target / 50);
+                    const timer = setInterval(() => {
+                        cur = Math.min(cur + inc, target);
+                        el.textContent = cur + '+';
+                        if (cur >= target) clearInterval(timer);
+                    }, 30);
+                });
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('section').forEach(s => countObs.observe(s));
+    </script>
+
+</body>
+
+</html>

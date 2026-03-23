@@ -458,14 +458,16 @@
                 <!-- CENTER -->
                 <div class="flex flex-col items-start md:items-center space-y-5 text-lg">
 
-                    <a class="magnetic">Home</a>
-                    <a class="magnetic">About</a>
+                    <a href="index.html" class="magnetic hover:text-gray-400 transition-colors">Home</a>
 
-                    <div class="flex items-center gap-2 magnetic">
+                    <a href="about.html" class="magnetic hover:text-gray-400 transition-colors">About</a>
+
+                    <a href="service.html"
+                        class="flex items-center gap-2 magnetic hover:text-gray-400 transition-colors">
                         Services <span class="text-xs text-gray-500">(06)</span>
-                    </div>
+                    </a>
 
-                    <a class="magnetic">Contact us</a>
+                    <a href="contact.html" class="magnetic hover:text-gray-400 transition-colors">Contact us</a>
 
                 </div>
 
@@ -505,12 +507,13 @@
             class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float">
 
             <div class="flex gap-6 text-sm text-gray-300">
-                <a class="magnetic">HOME</a>
-                <a class="magnetic">ABOUT</a>
-                <a class="magnetic">SERVICES</a>
+                <a href="index.html" class="hover:text-white transition-colors">HOME</a>
+                <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+                <a href="service.html" class="magnetic hover:text-white transition-colors">SERVICES</a>
             </div>
 
-            <button class="bg-white text-black px-6 py-2 rounded-full magnetic">
+            <button onclick="window.location.href='contact.html'"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-medium">
                 CONTACT +
             </button>
 
