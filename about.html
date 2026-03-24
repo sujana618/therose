@@ -69,9 +69,7 @@
             width: 4px;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
+        ::-webkit-scrollbar-track {}
 
         ::-webkit-scrollbar-thumb {
             background: #333;
@@ -174,7 +172,7 @@
     </style>
 </head>
 
-<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+<body class="text-white overflow-x-hidden">
 
 
     <!-- ══════════════════════════════════════════════════
@@ -182,16 +180,19 @@
      Big blurred ABOUT text bottom-left
      Courier bio text top-right (Frame 1)
 ══════════════════════════════════════════════════ -->
-    <section class="relative w-full bg-[#0a0a0a] overflow-hidden" style="min-height: 100vh;">
+    <section class="relative w-full bg-white overflow-hidden" style="min-height: 100vh;">
 
-        <!-- giant ghost ABOUT text — bottom left -->
-        <div class="absolute bottom-0 left-0 leading-none select-none pointer-events-none overflow-hidden">
-            <p class="about-bg-text">ABOUT</p>
+        <!-- TOP-LEFT: ABOUT heading + name -->
+        <div class="absolute top-1/3 left-8 md:left-14 z-20 -translate-y-1/2">
+            <h2 class="pixel-font text-black leading-none"
+                style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.04em;">ABOUT</h2>
+            <p class="pixel-font text-black text-xs tracking-widest mt-3" style="font-size: 11px;">ROSE SHRESTHA</p>
         </div>
+
 
         <!-- top-right: Courier bio text (Frame 1) -->
         <div class="absolute top-1/3 right-8 md:right-14 z-10 max-w-[260px] hidden md:block">
-            <p class="text-white/40 leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
+            <p class="text-black leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
                 Hi, I'm Rose Shrestha—a photographer<br>
                 passionate about capturing meaningful<br>
                 moments with creativity and care.<br>
@@ -205,7 +206,7 @@
         </div>
 
         <!-- centered B&W portrait — exactly Frame 1 -->
-        <div class="hero-portrait relative z-10 flex justify-center items-end h-full pt-20" style="min-height: 100vh;">
+        <div class="hero-portrait relative z-10 flex justify-center items-end h-full pt-10" style="min-height: 100vh;">
             <img src="assets/images/rose.avif" alt="Rose Shrestha" class="object-cover object-top"
                 style="height: 88vh; max-width: 420px; width: 100%; filter: grayscale(100%) contrast(1.05);">
         </div>
@@ -262,7 +263,7 @@
      LEFT: MILESTONES heading + huge stat numbers + body text
      RIGHT: stacked smaller stat cards
 ══════════════════════════════════════════════════ -->
-    <section class="max-w-[1300px] mx-auto px-6 py-10 grid md:grid-cols-2 gap-5 reveal">
+    <section class="max-w-[1300px] bg-white mx-auto px-6 py-10 grid md:grid-cols-2 gap-5 reveal">
 
         <!-- LEFT: Main milestones card -->
         <div
@@ -345,9 +346,10 @@
                 <div class="text-center">
                     <div
                         class="w-14 h-14 rounded-full bg-zinc-700 border-2 border-zinc-600 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-xl">🍴</span>
+                        <img src="/assets/images/flekzone.avif" alt="Flekzone" class="w-full h-full object-contain">
                     </div>
-                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">FlkZone</p>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Flekzone is a bakery
+                        located in Gokarna hanumanchowk with the best good and coffee in town</p>
                     <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Bakery &amp; Cafe
                     </p>
                 </div>
@@ -358,9 +360,12 @@
                 class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
                 <div class="text-center">
                     <div class="w-14 h-14 rounded-full bg-emerald-600 flex items-center justify-center mx-auto mb-3">
-                        <span class="pixel-font text-white text-xl font-bold">F</span>
+                        <img src="/assets/images/futechlogo.avif" alt="Flekzone" class="w-full h-full object-contain">
                     </div>
-                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Framely</p>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Futech is the IT company
+                        which give the serice for digital marketing, Software and web Development
+
+                    </p>
                     <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Creative Studio
                     </p>
                 </div>
@@ -371,10 +376,13 @@
                 class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
                 <div class="text-center">
                     <div class="w-14 h-14 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-3xl font-light text-sky-400"
-                            style="font-family:'Georgia',serif; font-style:italic;">M</span>
+                        <img src="/assets/images/moonlight.avif" alt="Flekzone" class="w-full h-full object-contain">
+
                     </div>
-                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">MoonLight</p>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Moonlight design stylish,
+                        customized furniture that transforms your space with elegance and quality
+
+                    </p>
                     <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Photography</p>
                 </div>
             </div>
@@ -384,10 +392,14 @@
                 class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
                 <div class="text-center">
                     <div class="w-14 h-14 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-2xl font-bold" style="color:#e67e22;">D</span><span
-                            class="text-2xl font-bold text-green-500">G</span>
+                        <img src="/assets/images/droneguru.avif" alt="Flekzone" class="w-full h-full object-contain">
+
                     </div>
-                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Drone Guru</p>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Drone Guru Pvt. Ltd. unites
+                        licensed pilots, aerospace engineers, and data scientists under one roof to deliver safe,
+                        repeatable, and insight-rich drone operations.
+
+                    </p>
                     <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Aerial Services
                     </p>
                 </div>
@@ -399,9 +411,12 @@
                 <div class="text-center">
                     <div
                         class="w-14 h-14 rounded-full border-2 border-yellow-500 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-yellow-500 text-lg font-bold pixel-font">TPH</span>
+                        <img src="/assets/images/tph.avif" alt="Flekzone" class="w-full h-full object-contain">
                     </div>
-                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">The Power Hub</p>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">The Powerhub is the gym
+                        located in the Gokarna Hanumanchowk with the best equipment
+
+                    </p>
                     <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Energy Solutions
                     </p>
                 </div>
@@ -412,10 +427,14 @@
                 class="logo-card bg-zinc-900 border border-white/5 rounded-[2rem] flex items-center justify-center p-10 aspect-[4/3]">
                 <div class="text-center">
                     <div class="w-14 h-14 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-zinc-300 text-sm tracking-widest" style="font-family:'Georgia',serif;">✦ T
-                            ✦</span>
+                        <img src="/assets/images/trainquality.avif" alt="Flekzone" class="w-full h-full object-contain">
+
                     </div>
-                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Tranquility</p>
+                    <p class="pixel-font text-[8px] text-zinc-400 uppercase tracking-widest">Tranquility Paradise Resort
+                        is best place to hangout and have many services like Rooms, BBQs , and swimming pools which is
+                        located in Tarebhir, Gokarna
+
+                    </p>
                     <p class="text-zinc-600 text-[10px] mt-1" style="font-family:'Inter',sans-serif;">Wellness Brand</p>
                 </div>
             </div>
@@ -428,61 +447,111 @@
      TEAM — TEAM heading + 3-col B&W portrait cards (Frames 7–8)
      Each card: full-bleed B&W photo + pixel name overlay at bottom
 ══════════════════════════════════════════════════ -->
-    <section class="max-w-[1300px] mx-auto px-6 pb-10 reveal">
+    <style>
+        /* The outer container stays white and handles the "reveal" */
+        .team-card-container {
+            background: #ffffff;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-        <!-- header row -->
+        /* The image wrapper that shrinks on hover */
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 10;
+            border-radius: 2rem;
+            /* Initial large radius */
+        }
+
+        /* Shrink logic: When container is hovered, shrink the image wrapper */
+        .team-card-container:hover .image-wrapper {
+            transform: scale(0.6) translateY(-15%);
+            /* Adjust scale and position */
+            border-radius: 1.5rem;
+        }
+
+        /* Handle grayscale transition */
+        .team-card-container img {
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .team-card-container:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Text Fade In/Out */
+        .member-info {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .team-card-container:hover .member-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <section class="max-w-[1300px] mx-auto px-6 pb-20 mt-20" style="background:#ffffff;">
+
         <div class="flex items-start justify-between mb-10 gap-6">
-            <h2 class="pixel-font text-5xl md:text-7xl text-white leading-none">TEAM</h2>
-            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs text-right hidden md:block"
-                style="font-family:'Inter',sans-serif;">
+            <h2 class="pixel-font text-5xl md:text-7xl leading-none" style="color:#111111;">TEAM</h2>
+            <p class="text-sm leading-relaxed max-w-xs text-right hidden md:block pixel-font"
+                style="font-family:'Space Mono',monospace; color:#999999; ">
                 Explore in-depth insights, industry trends, and expert perspectives.
-                Our journals offer valuable knowledge to inspire innovation and drive success.
+                Our journals offer valuable knowledge.
             </p>
         </div>
 
-        <!-- 3-col team cards — B&W photo fills entire rounded card, name at bottom -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <!-- Rose Shrestha -->
-            <div class="team-card relative rounded-[2rem] overflow-hidden bg-zinc-900 cursor-pointer"
-                style="aspect-ratio: 3/4;">
-                <img src="assets/images/rose.avif" alt="Rose Shrestha"
-                    class="absolute inset-0 w-full h-full object-cover object-top">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <p class="pixel-font text-sm text-white tracking-wide">ROSE SHRESTHA</p>
-                    <p class="pixel-font text-[9px] text-white/40 tracking-widest uppercase mt-1">Founder · Photographer
-                    </p>
+            <div class="team-card-container relative flex flex-col items-center justify-end overflow-hidden cursor-pointer"
+                style="aspect-ratio:1/1.1; border-radius: 3rem;">
+
+                <div class="image-wrapper absolute inset-0 overflow-hidden bg-zinc-200">
+                    <img src="assets/images/rose.avif" alt="Rose Shrestha" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent transition-opacity duration-500 team-card-container:hover:opacity-0">
+                    </div>
+                </div>
+
+                <div class="member-info text-center pb-10 z-0">
+                    <h3 class="pixel-font text-lg text-zinc-900 uppercase">Rose Shrestha</h3>
+                    <p class="pixel-font text-[10px] text-zinc-400 tracking-widest uppercase mt-2">Photographer &
+                        Videographer</p>
                 </div>
             </div>
 
-            <!-- Alex Shrestha -->
-            <div class="team-card relative rounded-[2rem] overflow-hidden bg-zinc-900 cursor-pointer"
-                style="aspect-ratio: 3/4;">
-                <img src="assets/images/portrait.avif" alt="Alex Shrestha"
-                    class="absolute inset-0 w-full h-full object-cover object-top">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <p class="pixel-font text-sm text-white tracking-wide">ALEX SHRESTHA</p>
-                    <p class="pixel-font text-[9px] text-white/40 tracking-widest uppercase mt-1">Cinematographer</p>
+            <div class="team-card-container relative flex flex-col items-center justify-end overflow-hidden cursor-pointer"
+                style="aspect-ratio:1/1.1; border-radius: 3rem;">
+
+                <div class="image-wrapper absolute inset-0 overflow-hidden bg-zinc-200">
+                    <img src="assets/images/alex.avif" alt="Alex Shrestha" class="w-full h-full object-cover">
+                </div>
+
+                <div class="member-info text-center pb-10 z-0">
+                    <h3 class="pixel-font text-lg text-zinc-900 uppercase">Alex Shrestha</h3>
+                    <p class="pixel-font text-[10px] text-zinc-400 tracking-widest uppercase mt-2">Photographer</p>
                 </div>
             </div>
 
-            <!-- Nayan Shrestha -->
-            <div class="team-card relative rounded-[2rem] overflow-hidden bg-zinc-900 cursor-pointer"
-                style="aspect-ratio: 3/4;">
-                <img src="assets/images/studio.avif" alt="Nayan Shrestha"
-                    class="absolute inset-0 w-full h-full object-cover object-center">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <p class="pixel-font text-sm text-white tracking-wide">NAYAN SHRESTHA</p>
-                    <p class="pixel-font text-[9px] text-white/40 tracking-widest uppercase mt-1">Drone Pilot</p>
+            <div class="team-card-container relative flex flex-col items-center justify-end overflow-hidden cursor-pointer"
+                style="aspect-ratio:1/1.1; border-radius: 3rem;">
+
+                <div class="image-wrapper absolute inset-0 overflow-hidden bg-zinc-200">
+                    <img src="assets/images/nayan.avif" alt="Nayan Shrestha" class="w-full h-full object-cover">
+                </div>
+
+                <div class="member-info text-center pb-10 z-0">
+                    <h3 class="pixel-font text-lg text-zinc-900 uppercase">Nayan Shrestha</h3>
+                    <p class="pixel-font text-[10px] text-zinc-400 tracking-widest uppercase mt-2">Photographer</p>
                 </div>
             </div>
 
         </div>
     </section>
-
 
     <!-- ══════════════════════════════════════════════════
      MARQUEE STRIP
@@ -596,65 +665,91 @@
     </section>
 
 
-    <!-- ══════════════════════════════════════════════════
-     FOOTER — identical to index.html (Frame 9)
-══════════════════════════════════════════════════ -->
-    <footer class="px-6 pb-24 bg-[#0a0a0a]">
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-[#0a0a0a] text-white px-6 pb-24">
 
         <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
 
+            <!-- GRID -->
             <div class="grid md:grid-cols-3 gap-16">
 
-                <div>
-                    <p class="text-xs tracking-widest text-gray-400 mb-4">STAY CONNECTED.</p>
-                    <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
+                <!-- LEFT -->
+                <div class="reveal-item">
+                    <p class="text-xs tracking-widest text-gray-400 mb-4">
+                        STAY CONNECTED.
+                    </p>
+
+                    <h2 class="text-3xl font-bold mb-4">
+                        THE ROSE SHRESTHA
+                    </h2>
+
                     <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
-                        I'm Rose Shrestha, a visual creator driven by the art of storytelling.
-                        Through design, photography, cinematography, and aerial shots, I transform
-                        ideas into striking visuals that connect, engage, and leave an impression.
+                        I’m Rose Shrestha, a visual creator driven by storytelling and cinematic visuals.
                     </p>
                 </div>
 
-                <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
-                    <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
-                    <a href="about.html" class="magnetic text-white">About</a>
-                    <div class="flex items-center gap-2 magnetic hover:text-gray-300 transition-colors cursor-pointer">
+                <!-- CENTER -->
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg">
+
+                    <a href="index.html" class="magnetic hover:text-gray-400 transition-colors">Home</a>
+
+                    <a href="about.html" class="magnetic hover:text-gray-400 transition-colors">About</a>
+
+                    <a href="service.html"
+                        class="flex items-center gap-2 magnetic hover:text-gray-400 transition-colors">
                         Services <span class="text-xs text-gray-500">(06)</span>
-                    </div>
-                    <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+                    </a>
+
+                    <a href="contact.html" class="magnetic hover:text-gray-400 transition-colors">Contact us</a>
+
                 </div>
 
-                <div class="flex flex-col items-start md:items-end text-white">
+                <!-- RIGHT -->
+                <div class="flex flex-col items-start md:items-end">
+
                     <p class="mb-6 text-lg">Social Media</p>
+
                     <div class="flex gap-6 text-xl">
+
                         <i class="fab fa-x-twitter magnetic"></i>
                         <i class="fab fa-instagram magnetic"></i>
                         <i class="fab fa-linkedin magnetic"></i>
                         <i class="fab fa-youtube magnetic"></i>
+
                     </div>
+
                 </div>
 
             </div>
 
+            <!-- CENTER BIG TEXT -->
             <div class="text-center mt-20">
-                <h1 class="press-font text-6xl text-gray-300">Rose</h1>
-                <p class="text-sm text-gray-500 mt-6">©2026 The Rose Shrestha. All right reserved.</p>
+                <h1 class="font-['Press_Start_2P'] text-6xl text-gray-300 glow">
+                    Rose
+                </h1>
+
+                <p class="text-sm text-gray-500 mt-6">
+                    ©2026 The Rose Shrestha. All rights reserved.
+                </p>
             </div>
 
         </div>
 
-        <!-- ══ FLOATING NAV — all links clickable ══ -->
+        <!-- FLOATING NAV -->
         <div
-            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-50 border border-white/5">
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-10">
+
             <div class="flex gap-6 text-sm text-gray-300">
-                <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
-                <a href="about.html" class="magnetic text-white">ABOUT</a>
-                <a href="index.html#services" class="magnetic hover:text-white transition-colors">SERVICES</a>
+                <a href="index.html" class="hover:text-white transition-colors">HOME</a>
+                <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+                <a href="service.html" class="magnetic hover:text-white transition-colors">SERVICES</a>
             </div>
-            <a href="#contact"
-                class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+
+            <button onclick="window.location.href='contact.html'"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-medium">
                 CONTACT +
-            </a>
+            </button>
+
         </div>
 
     </footer>

@@ -164,17 +164,33 @@
 <body class="bg-white text-[#111] overflow-x-hidden">
 
 
-    <!-- ══════════════════════════════════════════════════
-     HERO — Full-bleed aerial landscape, rounded bottom
-══════════════════════════════════════════════════ -->
-    <section class="relative w-full overflow-hidden rounded-b-[2.5rem] reveal" style="height: 55vh; min-height: 380px;">
+    <section class="relative w-full overflow-hidden rounded-b-[2.5rem] reveal" style="height:100vh; min-height:500px;">
 
         <!-- aerial landscape image -->
         <img src="assets/images/aerial.avif" alt="Aerial landscape"
-            class="hero-parallax absolute inset-0 w-full h-full object-cover object-center">
+            class="hero-parallax absolute inset-0 w-full h-full object-cover object-center"
+            style="filter:grayscale(100%);">
 
-        <!-- subtle dark vignette at edges -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/25 pointer-events-none">
+        <!-- subtle vignette -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30 pointer-events-none">
+        </div>
+
+        <!-- TOP-LEFT: AERIAL heading + subtitle -->
+        <div class="absolute top-1/3 left-8 md:left-14 z-20 -translate-y-1/2">
+            <h2 class="pixel-font text-white leading-none"
+                style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.04em;">AERIAL</h2>
+            <p class="pixel-font text-white tracking-widest mt-3" style="font-size: 11px;">AERIAL</p>
+        </div>
+
+        <!-- TOP-RIGHT: Courier bio text -->
+        <div class="absolute top-1/3 right-8 md:right-14 z-10 max-w-[260px] hidden md:block -translate-y-1/2">
+            <p class="text-white leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
+                I'm Rose Shrestha, a visual creator driven by<br>
+                the art of storytelling. Through design,<br>
+                photography, cinematography, and aerial<br>
+                shots, I transform ideas into striking visuals<br>
+                that connect, engage, and leave an impression.
+            </p>
         </div>
 
         <!-- top-left back link -->
@@ -191,6 +207,7 @@
         </div>
 
     </section>
+
 
 
     <!-- ══════════════════════════════════════════════════
@@ -240,36 +257,7 @@
 
         <!-- aerial teal/sky image -->
         <div class="split-img min-h-[480px] bg-gray-200">
-            <img src="assets/images/aerial.avif" alt="Aerial sky view">
-        </div>
-
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════
-     SECTION 2 — Top-down road image LEFT + White card RIGHT
-══════════════════════════════════════════════════ -->
-    <section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
-
-        <!-- aerial road/forest image -->
-        <div class="split-img min-h-[480px] bg-gray-200">
-            <img src="assets/images/aerial.avif" alt="Aerial road through forest" style="object-position: center 60%;">
-        </div>
-
-        <!-- white text card -->
-        <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-10 md:p-14 flex flex-col justify-center">
-            <p class="pixel-font text-[9px] tracking-[0.3em] text-gray-400 uppercase mb-5">The View</p>
-            <h2 class="pixel-font text-xl md:text-2xl text-[#111] leading-snug mb-7">
-                STEP INTO A<br>WORLD OF<br>REFINED VISUALS
-            </h2>
-            <p class="text-gray-500 text-sm leading-relaxed mb-6" style="font-family:'Inter',sans-serif;">
-                Step into a world of refined visuals, where composition, light, and storytelling
-                come together to create images that feel immersive, intentional, and timeless.
-            </p>
-            <div class="border-t border-gray-100 pt-6 mt-2">
-                <p class="pixel-font text-[10px] tracking-[0.2em] text-[#111] uppercase mb-1">THE ROSE SHRESTHA</p>
-                <p class="text-gray-400 text-xs" style="font-family:'Inter',sans-serif;">Artist</p>
-            </div>
+            <img src="assets/images/aerial2.avif" alt="Aerial sky view">
         </div>
 
     </section>
@@ -280,7 +268,7 @@
 ══════════════════════════════════════════════════ -->
     <section class="px-6 py-5 reveal">
         <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 55vh;">
-            <img src="assets/images/aerial.avif" alt="Aerial panoramic"
+            <img src="assets/images/aerial3.avif" alt="Aerial panoramic"
                 class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
 
@@ -342,129 +330,27 @@
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
             <div class="gallery-item aspect-[3/4] bg-gray-200">
-                <img src="assets/images/aerial.avif" alt="A1" style="object-position: 20% center;">
+                <img src="assets/images/aerial5.avif" alt="A1" style="object-position: 20% center;">
             </div>
 
             <div class="gallery-item aspect-[3/4] bg-gray-200">
-                <img src="assets/images/aerial.avif" alt="A2" style="object-position: 80% center;">
+                <img src="assets/images/aerial6.avif" alt="A2" style="object-position: 80% center;">
             </div>
 
             <div class="gallery-item aspect-[3/4] bg-gray-200">
-                <img src="assets/images/aerial.avif" alt="A3" style="object-position: 50% 30%;">
+                <img src="assets/images/aerial4.avif" alt="A3" style="object-position: 50% 30%;">
             </div>
 
             <div class="gallery-item col-span-2 aspect-video bg-gray-200">
-                <img src="assets/images/aerial.avif" alt="A4 wide" style="object-position: center 40%;">
+                <img src="assets/images/aerial3.avif" alt="A4 wide" style="object-position: center 40%;">
             </div>
 
             <div class="gallery-item aspect-video bg-gray-200">
-                <img src="assets/images/aerial.avif" alt="A5" style="object-position: 60% center;">
+                <img src="assets/images/aerial2.avif" alt="A5" style="object-position: 60% center;">
             </div>
 
         </div>
     </section>
-
-
-    <!-- ══════════════════════════════════════════════════
-     STATS + DETAIL CARDS — mirrors index.html Milestones
-══════════════════════════════════════════════════ -->
-    <section class="max-w-[1300px] mx-auto px-6 pb-10 grid md:grid-cols-2 gap-6 reveal">
-
-        <!-- Milestones card — identical style to index.html -->
-        <div
-            class="bg-zinc-900 rounded-[60px] p-10 md:p-16 flex flex-col items-center space-y-10 border border-white/5 text-center">
-            <h2 class="pixel-font text-2xl md:text-3xl tracking-tighter text-white uppercase">Aerial Stats</h2>
-            <div class="w-full space-y-14 py-6">
-                <div class="group">
-                    <div
-                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
-                        20+</div>
-                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Aerial Shoots</div>
-                    <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
-                </div>
-                <div class="group">
-                    <div
-                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
-                        4K</div>
-                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Resolution Output</div>
-                    <div class="h-[1px] w-12 bg-white/20 mx-auto mt-8"></div>
-                </div>
-                <div class="group">
-                    <div
-                        class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">
-                        3+</div>
-                    <div class="text-gray-500 uppercase tracking-[0.3em] text-[10px] mt-2">Years Flying</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stacked detail cards -->
-        <div class="flex flex-col gap-5">
-
-            <div class="bg-gray-50 border border-gray-100 rounded-[2rem] p-8 flex-1">
-                <span class="text-2xl mb-4 block">🚁</span>
-                <p class="pixel-font text-[9px] tracking-[0.25em] text-gray-400 uppercase mb-2">Equipment</p>
-                <h3 class="pixel-font text-xs text-[#111] mb-3">DRONE FLEET</h3>
-                <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
-                    DJI Mavic 3 Pro & Air 3 with 4K/60fps capability, 3-axis gimbal stabilization,
-                    and obstacle avoidance for smooth, cinema-quality footage.
-                </p>
-            </div>
-
-            <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex-1">
-                <span class="text-2xl mb-4 block">🌄</span>
-                <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Locations</p>
-                <h3 class="pixel-font text-xs text-white mb-3">NEPAL &amp; BEYOND</h3>
-                <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
-                    Kathmandu Valley, Pokhara, Chitwan, Mustang, and Himalayan regions.
-                    Special permits secured for restricted airspace zones.
-                </p>
-            </div>
-
-            <div class="bg-white border border-gray-100 shadow-sm rounded-[2rem] p-8 flex-1">
-                <span class="text-2xl mb-4 block">🎬</span>
-                <p class="pixel-font text-[9px] tracking-[0.25em] text-gray-400 uppercase mb-2">Deliverables</p>
-                <h3 class="pixel-font text-xs text-[#111] mb-3">PHOTO + VIDEO</h3>
-                <p class="text-gray-500 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
-                    Color-graded stills, cinematic video reels with licensed music, and
-                    raw RAW files—delivered within 7 days via private gallery.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════
-     FULL OVERLAY — image with left text panel (like wedding page)
-══════════════════════════════════════════════════ -->
-    <section class="px-6 pb-6 reveal">
-        <div class="relative rounded-[2.5rem] overflow-hidden min-h-[68vh] flex items-center">
-
-            <img src="assets/images/aerial.avif" alt="Aerial view overlay"
-                class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-
-            <div class="relative z-10 px-12 md:px-20 max-w-lg">
-                <p class="pixel-font text-[9px] tracking-[0.3em] text-white/50 uppercase mb-4">The Shot</p>
-                <h2 class="pixel-font text-2xl md:text-4xl text-white leading-snug mb-6">
-                    EVERY FRAME<br>TELLS A<br>STORY
-                </h2>
-                <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-8" style="font-family:'Inter',sans-serif;">
-                    From mountain ridgelines to winding river valleys—each aerial photograph
-                    is a careful composition of light, altitude, and timing.
-                </p>
-                <div class="pt-6 border-t border-white/10">
-                    <p class="pixel-font text-[10px] tracking-[0.2em] text-white uppercase">THE ROSE SHRESTHA</p>
-                    <p class="text-white/40 text-xs mt-1" style="font-family:'Inter',sans-serif;">Artiste · Drone Pilot
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
 
     <!-- ══════════════════════════════════════════════════
      CONTACT — dark with starry/concert bg (from video frame 3)
@@ -545,7 +431,7 @@
     <!-- ══════════════════════════════════════════════════
      FOOTER — identical to index.html
 ══════════════════════════════════════════════════ -->
-    <footer class="px-6 pb-24 bg-white">
+    <footer class="px-6 pb-24 bg-black">
 
         <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
 
@@ -563,11 +449,9 @@
                 <!-- CENTER -->
                 <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
                     <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
-                    <a href="#" class="magnetic hover:text-gray-300 transition-colors">About</a>
-                    <div class="flex items-center gap-2 magnetic">
-                        Services <span class="text-xs text-gray-500">(06)</span>
-                    </div>
-                    <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+                    <a href="about.html" class="magnetic hover:text-gray-300 transition-colors">About</a>
+                    <a href="service.html" class="magnetic hover:text-gray-300 transition-colors">Service</a>
+                    <a href="contact.html" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
                 </div>
 
                 <!-- RIGHT -->
@@ -593,13 +477,13 @@
 
         <!-- ── FLOATING NAV — identical to index.html ── -->
         <div
-            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-50">
-            <div class="flex gap-6 text-sm text-gray-300">
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl z-50 border border-white/5">
+            <div class="flex gap-6 text-sm text-zinc-400">
                 <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
-                <a href="#" class="magnetic hover:text-white transition-colors">ABOUT</a>
-                <a href="#" class="magnetic hover:text-white transition-colors">SERVICES</a>
+                <a href="about.html" class="magnetic hover:text-white transition-colors">ABOUT</a>
+                <a href="service.html" class="magnetic hover:text-white transition-colors">SERVICES</a>
             </div>
-            <a href="#contact"
+            <a href="contact.html"
                 class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
                 CONTACT +
             </a>

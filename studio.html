@@ -6,26 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 
     <title>Studio — The Rose</title>
 
     <style>
-        body { font-family: 'Space Grotesk', sans-serif; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
-        .pixel-font  { font-family: 'Silkscreen', cursive; }
-        .press-font  { font-family: 'Press Start 2P', cursive; }
-        .script-font { font-family: 'Dancing Script', cursive; }
+        .pixel-font {
+            font-family: 'Silkscreen', cursive;
+        }
+
+        .press-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
 
         /* ── Reveal ── */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -33,43 +46,77 @@
         }
 
         /* ── Magnetic ── */
-        .magnetic { transition: transform 0.2s; cursor: pointer; }
+        .magnetic {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
 
         /* ── Split image hover ── */
-        .split-img { border-radius: 2rem; overflow: hidden; }
+        .split-img {
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+
         .split-img img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.7s ease;
         }
-        .split-img:hover img { transform: scale(1.05); }
+
+        .split-img:hover img {
+            transform: scale(1.05);
+        }
 
         /* ── Gallery hover ── */
-        .gallery-item { border-radius: 1.5rem; overflow: hidden; }
+        .gallery-item {
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
         .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.6s ease;
         }
-        .gallery-item:hover img { transform: scale(1.07); }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
 
         /* ── Quote left border ── */
         .quote-accent {
-            border-left: 2px solid rgba(255,255,255,0.15);
+            border-left: 2px solid rgba(255, 255, 255, 0.15);
             padding-left: 1.5rem;
         }
 
         /* ── Focus ── */
-        input:focus, textarea:focus {
-            background: rgba(255,255,255,0.08) !important;
-            border-color: rgba(255,255,255,0.3) !important;
+        input:focus,
+        textarea:focus {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
             outline: none;
         }
-        input, textarea { outline: none; }
+
+        input,
+        textarea {
+            outline: none;
+        }
 
         /* ── Scrollbar ── */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
 
         /* ── Noise grain overlay ── */
         body::before {
@@ -84,525 +131,391 @@
 
         /* ── Hero fade-in image (mimics the slow-load effect in video) ── */
         @keyframes heroFade {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        .hero-img { animation: heroFade 1.8s ease forwards 0.3s; opacity: 0; }
+
+        .hero-img {
+            animation: heroFade 1.8s ease forwards 0.3s;
+            opacity: 0;
+        }
 
         /* ── Shimmer line ── */
         @keyframes shimmer {
-            0%   { transform: translateX(-100%); }
-            100% { transform: translateX(300%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(300%);
+            }
         }
+
         .shimmer-line::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
             animation: shimmer 4s ease-in-out infinite;
         }
     </style>
 </head>
 
 <!-- DARK BACKGROUND — user requested -->
+
 <body class="bg-[#0a0a0a] text-white overflow-x-hidden">
 
 
-<!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════
      HERO — Minimal dark hero (studio aesthetic)
      Clean, almost empty — studio backdrop feel
      Image fades in slowly matching the video
 ══════════════════════════════════════════════════ -->
-<section class="relative w-full overflow-hidden rounded-b-[2.5rem] shimmer-line" style="height: 100vh; min-height: 600px;">
+    <section class="relative w-full overflow-hidden rounded-b-[2.5rem] shimmer-line"
+        style="height:100vh; min-height:600px;">
 
-    <!-- Studio backdrop image -->
-    <img src="assets/images/studio.avif"
-         alt="Studio hero"
-         class="hero-img absolute inset-0 w-full h-full object-cover object-center">
+        <!-- Studio backdrop image — grayscale, no heavy overlay -->
+        <img src="assets/images/studio.avif" alt="Studio hero"
+            class="hero-img absolute inset-0 w-full h-full object-cover object-center" style="filter:grayscale(100%);">
 
-    <!-- dark overlay heavier for dark theme -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 pointer-events-none"></div>
+        <!-- very light vignette only -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15 pointer-events-none">
+        </div>
 
-    <!-- back link -->
-    <a href="index.html"
-       class="absolute top-7 left-8 z-10 flex items-center gap-2 text-white/40 hover:text-white/80 transition-colors pixel-font text-[9px] tracking-widest uppercase">
-        <span>←</span> Back
-    </a>
-
-    <!-- center hero text — fades in with image -->
-    <div class="hero-img absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-6">
-        <p class="pixel-font text-[9px] tracking-[0.4em] text-white/30 uppercase mb-6">The Rose Shrestha</p>
-        <h1 class="pixel-font text-5xl md:text-8xl text-white leading-tight mb-6">STUDIO</h1>
-        <p class="text-white/40 text-xs tracking-[0.3em] uppercase" style="font-family:'Inter',sans-serif;">
-            Photography &nbsp;·&nbsp; Direction &nbsp;·&nbsp; Light
-        </p>
-    </div>
-
-    <!-- scroll hint -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <p class="pixel-font text-[8px] text-white/20 tracking-widest uppercase">Scroll</p>
-        <div class="w-[1px] h-8 bg-white/15"></div>
-    </div>
-
-</section>
+        <!-- back link -->
 
 
-<!-- ══════════════════════════════════════════════════
+        <!-- TOP-LEFT: STUDIO heading + subtitle -->
+        <div class="absolute top-1/3 left-8 md:left-14 z-20 -translate-y-1/2">
+            <h2 class="pixel-font text-white leading-none"
+                style="font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: 0.04em;">STUDIO</h2>
+            <p class="pixel-font text-white tracking-widest mt-3" style="font-size: 11px;">STUDIO</p>
+        </div>
+
+        <!-- TOP-RIGHT: Courier bio text -->
+        <div class="absolute top-1/3 right-8 md:right-14 z-10 max-w-[260px] md:block -translate-y-1/2">
+            <p class="text-white leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
+                I'm Rose Shrestha, a visual creator driven by<br>
+                the art of storytelling. Through design,<br>
+                photography, cinematography, and aerial<br>
+                shots, I transform ideas into striking visuals<br>
+                that connect, engage, and leave an impression.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
      SECTION 1 — B&W emotional portrait LEFT + dark card RIGHT
      (frame 2 — woman hugging knees, B&W studio shot)
      White card → dark zinc card for dark theme
 ══════════════════════════════════════════════════ -->
-<section class="max-w-[1300px] mx-auto px-6 pt-10 pb-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+    <section class="max-w-[1300px] mx-auto px-6 pt-10 pb-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
 
-    <!-- B&W studio portrait -->
-    <div class="split-img min-h-[580px] bg-zinc-900">
-        <img src="assets/images/studio.avif"
-             alt="B&W emotional portrait"
-             style="filter: grayscale(100%) contrast(1.05);">
-    </div>
-
-    <!-- dark card with left-border quote — dark theme adaptation -->
-    <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
-
-        <div class="quote-accent mb-10">
-            <p class="text-white/40 text-sm leading-relaxed text-center"
-               style="font-family:'Inter',sans-serif; font-style:italic;">
-                A controlled space for limitless creativity—where lighting and direction
-                shape powerful, clean, and expressive visuals.
-            </p>
+        <!-- B&W studio portrait -->
+        <div class="split-img min-h-[580px] bg-zinc-900">
+            <img src="assets/images/studio.avif" alt="B&W emotional portrait"
+                style="filter: grayscale(100%) contrast(1.05);">
         </div>
 
-        <p class="pixel-font text-[9px] tracking-[0.3em] text-zinc-500 uppercase mb-5">The Studio</p>
-        <h2 class="pixel-font text-xl md:text-2xl text-white leading-snug mb-7">
-            CONTROLLED<br>LIGHT.<br>RAW EMOTION.
-        </h2>
-        <p class="text-zinc-400 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif;">
-            Every studio session is a carefully crafted environment—seamless backdrops,
-            precision lighting, and a calm space where subjects feel free to be
-            entirely themselves.
-        </p>
-        <ul class="space-y-4">
-            <li class="flex items-center gap-3">
-                <span class="w-6 h-[1px] bg-zinc-600 flex-shrink-0"></span>
-                <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Seamless Backdrop Sessions</span>
-            </li>
-            <li class="flex items-center gap-3">
-                <span class="w-6 h-[1px] bg-zinc-600 flex-shrink-0"></span>
-                <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Moody Low-Key Lighting</span>
-            </li>
-            <li class="flex items-center gap-3">
-                <span class="w-6 h-[1px] bg-zinc-600 flex-shrink-0"></span>
-                <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">High-Key &amp; Editorial Style</span>
-            </li>
-        </ul>
-    </div>
+        <!-- dark card with left-border quote — dark theme adaptation -->
+        <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
 
-</section>
+            <div class="quote-accent mb-10">
+                <p class="text-white/40 text-sm leading-relaxed text-center"
+                    style="font-family:'Inter',sans-serif; font-style:italic;">
+                    A controlled space for limitless creativity—where lighting and direction shape powerful, clean, and
+                    expressive visuals.
 
 
-<!-- ══════════════════════════════════════════════════
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
      FULL-WIDTH IMAGE — Close-up colour detail shot
      (frame 3 top — earring/face macro, full-bleed rounded)
 ══════════════════════════════════════════════════ -->
-<section class="px-6 py-5 reveal">
-    <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 60vh;">
-        <img src="assets/images/studio.avif"
-             alt="Studio close-up detail"
-             class="w-full h-full object-cover object-center">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+    <section class="px-6 py-5 reveal">
+        <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 60vh;">
+            <img src="assets/images/s2.avif" alt="Studio close-up detail"
+                class="w-full h-full object-cover object-center">
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none">
+            </div>
 
-        <!-- watermark -->
-        <div class="absolute bottom-8 right-10 pointer-events-none">
-            <p class="script-font text-xl text-white/20">The rose Shrestha ♡</p>
+            <!-- watermark -->
+            <div class="absolute bottom-8 right-10 pointer-events-none">
+                <p class="script-font text-xl text-white/20">The rose Shrestha ♡</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-<!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════
      SECTION 2 — Dark card LEFT + B&W maternity image RIGHT
      (frame 3 bottom — woman with sonogram photo, B&W)
 ══════════════════════════════════════════════════ -->
-<section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+    <section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
 
-    <!-- dark card with left-border quote -->
-    <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+        <!-- dark card with left-border quote -->
+        <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
 
-        <div class="quote-accent mb-10">
-            <p class="text-white/40 text-sm leading-relaxed"
-               style="font-family:'Inter',sans-serif; font-style:italic;">
-                Studio photography is where precision meets artistry—crafted lighting
-                and minimal distractions to highlight pure expression.
-            </p>
+            <div class="quote-accent mb-10">
+                <p class="text-white/40 text-sm leading-relaxed"
+                    style="font-family:'Inter',sans-serif; font-style:italic;">
+                    Studio photography is where precision meets artistry—crafted lighting and minimal distractions to
+                    highlight pure expression.
+
+
+                </p>
+            </div>
+
         </div>
 
-        <p class="pixel-font text-[9px] tracking-[0.3em] text-zinc-500 uppercase mb-5">The Session</p>
-        <h2 class="pixel-font text-xl md:text-2xl text-white leading-snug mb-7">
-            PRECISION<br>MEETS<br>ARTISTRY
-        </h2>
-        <p class="text-zinc-400 text-sm leading-relaxed mb-8" style="font-family:'Inter',sans-serif;">
-            Maternity, family, and personal milestones—studio sessions designed to preserve
-            the moments that matter most, with intimacy and care built into every frame.
-        </p>
-        <ul class="space-y-4">
-            <li class="flex items-center gap-3">
-                <span class="w-6 h-[1px] bg-zinc-600 flex-shrink-0"></span>
-                <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Maternity &amp; Newborn</span>
-            </li>
-            <li class="flex items-center gap-3">
-                <span class="w-6 h-[1px] bg-zinc-600 flex-shrink-0"></span>
-                <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Family &amp; Couple Sessions</span>
-            </li>
-            <li class="flex items-center gap-3">
-                <span class="w-6 h-[1px] bg-zinc-600 flex-shrink-0"></span>
-                <span class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest">Personal Brand Portraits</span>
-            </li>
-        </ul>
+        <!-- B&W maternity/intimate studio image -->
+        <div class="split-img min-h-[480px] bg-zinc-800">
+            <img src="assets/images/s3.avif" alt="Maternity studio"
+                style="filter: grayscale(100%); object-position: center 30%;">
+        </div>
 
-    </div>
-
-    <!-- B&W maternity/intimate studio image -->
-    <div class="split-img min-h-[480px] bg-zinc-800">
-        <img src="assets/images/studio.avif"
-             alt="Maternity studio"
-             style="filter: grayscale(100%); object-position: center 30%;">
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════
      FULL-WIDTH — Dramatic B&W silhouette
      (frame 4 — backlit family silhouette, very dark/contrasty)
 ══════════════════════════════════════════════════ -->
-<section class="px-6 py-5 reveal">
-    <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 65vh;">
-        <img src="assets/images/studio.avif"
-             alt="Dramatic silhouette"
-             class="w-full h-full object-cover object-top"
-             style="filter: grayscale(100%) contrast(1.3) brightness(0.7);">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 pointer-events-none"></div>
+    <section class="px-6 py-5 reveal">
+        <div class="relative w-full rounded-[2.5rem] overflow-hidden" style="height: 65vh;">
+            <img src="assets/images/s4.avif" alt="Dramatic silhouette" class="w-full h-full object-cover object-top"
+                style="filter: grayscale(100%) contrast(1.3) brightness(0.7);">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 pointer-events-none">
+            </div>
 
-        <!-- bottom caption -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center px-6 pointer-events-none">
-            <p class="text-white/40 text-xs tracking-[0.2em] uppercase"
-               style="font-family:'Courier New',monospace; font-size:10px;">
-                Studio · Kathmandu · Nepal
-            </p>
+            <!-- bottom caption -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center px-6 pointer-events-none">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase"
+                    style="font-family:'Courier New',monospace; font-size:10px;">
+                    Studio · Kathmandu · Nepal
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-<!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════
      SECTION 3 — B&W portrait LEFT + dark attribution card RIGHT
      (frame 5 top — dark silhouette portrait)
 ══════════════════════════════════════════════════ -->
-<section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
+    <section class="max-w-[1300px] mx-auto px-6 py-5 grid md:grid-cols-2 gap-5 items-stretch reveal">
 
-    <!-- dark silhouette studio image -->
-    <div class="split-img min-h-[500px] bg-black relative">
-        <img src="assets/images/studio.avif"
-             alt="Studio silhouette"
-             style="filter: grayscale(100%) contrast(1.4) brightness(0.55);">
-        <!-- watermark -->
-        <div class="absolute bottom-6 left-7 z-10 pointer-events-none">
-            <p class="script-font text-base text-white/20">The rose Shrestha ♡</p>
-        </div>
-    </div>
-
-    <!-- dark attribution card -->
-    <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
-        <div class="quote-accent mb-10">
-            <p class="text-white/40 text-sm leading-relaxed text-center"
-               style="font-family:'Inter',sans-serif; font-style:italic;">
-                Portraits that go beyond the surface—crafted to reflect character, emotion,
-                and the quiet moments in between.
-            </p>
-        </div>
-        <div class="border-t border-white/5 pt-8 mt-2 text-center">
-            <p class="pixel-font text-[11px] tracking-[0.2em] text-white uppercase mb-2">THE ROSE SHRESTHA</p>
-            <p class="text-zinc-500 text-xs" style="font-family:'Inter',sans-serif;">Artist · Studio Photographer</p>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     GALLERY GRID
-══════════════════════════════════════════════════ -->
-<section class="max-w-[1300px] mx-auto px-6 py-10 reveal">
-
-    <div class="mb-10 flex items-end justify-between">
-        <div>
-            <p class="pixel-font text-[9px] tracking-[0.3em] text-zinc-500 uppercase mb-3">Gallery</p>
-            <h2 class="pixel-font text-2xl md:text-3xl text-white">STUDIO<br>SESSIONS</h2>
-        </div>
-        <p class="pixel-font text-[9px] text-zinc-500 uppercase tracking-widest hidden md:block">Studio Collection</p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-
-        <div class="gallery-item aspect-[3/4] bg-zinc-900">
-            <img src="assets/images/studio.avif" alt="S1"
-                 style="filter:grayscale(100%) contrast(1.1);">
-        </div>
-
-        <div class="gallery-item aspect-[3/4] bg-zinc-900">
-            <img src="assets/images/studio.avif" alt="S2"
-                 style="object-position:60% center;">
-        </div>
-
-        <div class="gallery-item aspect-[3/4] bg-zinc-900">
-            <img src="assets/images/studio.avif" alt="S3"
-                 style="filter:grayscale(100%) brightness(0.8); object-position:40% center;">
-        </div>
-
-        <div class="gallery-item col-span-2 aspect-video bg-zinc-900">
-            <img src="assets/images/studio.avif" alt="S4 wide"
-                 style="filter:grayscale(100%); object-position:center 30%;">
-        </div>
-
-        <div class="gallery-item aspect-video bg-zinc-900">
-            <img src="assets/images/studio.avif" alt="S5"
-                 style="filter:contrast(1.2) brightness(0.85);">
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     STATS + DETAIL CARDS
-══════════════════════════════════════════════════ -->
-<section class="max-w-[1300px] mx-auto px-6 pb-10 grid md:grid-cols-2 gap-6 reveal">
-
-    <!-- Milestones — same style as index.html but already fits dark theme -->
-    <div class="bg-zinc-900 rounded-[60px] p-10 md:p-16 flex flex-col items-center space-y-10 border border-white/5 text-center">
-        <h2 class="pixel-font text-2xl md:text-3xl tracking-tighter text-white uppercase">Studio Stats</h2>
-        <div class="w-full space-y-14 py-6">
-            <div class="group">
-                <div class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">40+</div>
-                <div class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] mt-2">Studio Sessions</div>
-                <div class="h-[1px] w-12 bg-white/10 mx-auto mt-8"></div>
-            </div>
-            <div class="group">
-                <div class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">100+</div>
-                <div class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] mt-2">Edited Deliveries</div>
-                <div class="h-[1px] w-12 bg-white/10 mx-auto mt-8"></div>
-            </div>
-            <div class="group">
-                <div class="pixel-font text-6xl md:text-7xl text-white tracking-tighter group-hover:scale-105 transition-transform">4+</div>
-                <div class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] mt-2">Years of Experience</div>
+        <!-- dark silhouette studio image -->
+        <div class="split-img min-h-[500px] bg-black relative">
+            <img src="assets/images/s5.avif" alt="Studio silhouette"
+                style="filter: grayscale(100%) contrast(1.4) brightness(0.55);">
+            <!-- watermark -->
+            <div class="absolute bottom-6 left-7 z-10 pointer-events-none">
+                <p class="script-font text-base text-white/20">The rose Shrestha ♡</p>
             </div>
         </div>
-    </div>
 
-    <!-- Stacked detail cards — dark themed -->
-    <div class="flex flex-col gap-5">
-
-        <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex-1">
-            <span class="text-2xl mb-4 block">💡</span>
-            <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Equipment</p>
-            <h3 class="pixel-font text-xs text-white mb-3">STUDIO LIGHTING</h3>
-            <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
-                Profoto B10 strobes, continuous LED panels, and a full modifier kit—
-                from deep octas to beauty dishes—for every lighting scenario.
-            </p>
+        <!-- dark attribution card -->
+        <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-10 md:p-14 flex flex-col justify-center">
+            <div class="quote-accent mb-10">
+                <p class="text-white/40 text-sm leading-relaxed text-center"
+                    style="font-family:'Inter',sans-serif; font-style:italic;">
+                    Portraits that go beyond the surface—crafted to reflect character, emotion,
+                    and the quiet moments in between.
+                </p>
+            </div>
+            <div class="border-t border-white/5 pt-8 mt-2 text-center">
+                <p class="pixel-font text-[11px] tracking-[0.2em] text-white uppercase mb-2">THE ROSE SHRESTHA</p>
+                <p class="text-zinc-500 text-xs" style="font-family:'Inter',sans-serif;">Artist · Studio Photographer
+                </p>
+            </div>
         </div>
 
-        <div class="bg-zinc-800 border border-white/5 rounded-[2rem] p-8 flex-1">
-            <span class="text-2xl mb-4 block">🎞️</span>
-            <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Style</p>
-            <h3 class="pixel-font text-xs text-white mb-3">B&amp;W &amp; COLOUR</h3>
-            <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
-                From timeless black-and-white to richly graded colour—studio work
-                delivered in the aesthetic that best serves your story.
-            </p>
-        </div>
-
-        <div class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex-1">
-            <span class="text-2xl mb-4 block">📦</span>
-            <p class="pixel-font text-[9px] tracking-[0.25em] text-zinc-500 uppercase mb-2">Deliverables</p>
-            <h3 class="pixel-font text-xs text-white mb-3">WHAT YOU GET</h3>
-            <p class="text-zinc-400 text-xs leading-relaxed" style="font-family:'Inter',sans-serif;">
-                Fully retouched high-res files delivered in 5–7 days. Print-ready TIFFs
-                and web-optimized JPEGs included in a private online gallery.
-            </p>
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════
      CONTACT — dark city lights bg (frame 5)
      Standalone dark form card — exactly as in the video
      (NOT glassmorphism — solid dark card with CONTACT US header)
 ══════════════════════════════════════════════════ -->
-<section id="contact" class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
+    <section id="contact"
+        class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
 
-    <div class="absolute inset-0 z-0">
-        <img src="assets/images/contact.avif"
-             alt="Contact background"
-             class="w-full h-full object-cover grayscale opacity-50">
-        <div class="absolute inset-0 bg-black/70 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
-    </div>
-
-    <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-        <!-- LEFT: GET IN TOUCH pixel text (exactly matches frame 5) -->
-        <div class="text-white space-y-8">
-            <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
-                GET IN<br>TOUCH
-            </h1>
-            <p class="text-zinc-400 max-w-sm text-sm leading-relaxed font-light"
-               style="font-family:'Inter',sans-serif;">
-                Have a project in mind? Whether you're launching a brand, designing a product,
-                or elevating your digital presence, we're here to bring your vision to life.
-            </p>
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/contact.avif" alt="Contact background"
+                class="w-full h-full object-cover grayscale opacity-50">
+            <div class="absolute inset-0 bg-black/70 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
         </div>
 
-        <!-- RIGHT: standalone dark card — matches frame 5 exactly -->
-        <div class="bg-[#161616] border border-white/8 p-10 md:p-12 rounded-[2rem] shadow-2xl">
+        <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            <h2 class="pixel-font text-white text-center mb-10 tracking-[0.4em] text-[10px] uppercase">
-                Contact Us
-            </h2>
-
-            <form class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
-                               style="font-family:'Inter',sans-serif;">First name</label>
-                        <input type="text" placeholder="rose"
-                               class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
-                               style="font-family:'Inter',sans-serif;">Last name</label>
-                        <input type="text" placeholder="shrestha"
-                               class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
-                               style="font-family:'Inter',sans-serif;">Email</label>
-                        <input type="email" placeholder="roseshr12@gmail.com"
-                               class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
-                               style="font-family:'Inter',sans-serif;">Phone no.</label>
-                        <input type="tel" placeholder="9860307418"
-                               class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
-                    </div>
-                </div>
-
-                <button type="submit"
-                        class="w-full bg-white text-black font-bold py-5 rounded-full hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase mt-2">
-                    Submit
-                </button>
-            </form>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     FOOTER — identical to index.html (frame 6)
-══════════════════════════════════════════════════ -->
-<footer class="px-6 pb-24 bg-[#0a0a0a]">
-
-    <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
-
-        <div class="grid md:grid-cols-3 gap-16">
-
-            <!-- LEFT -->
-            <div>
-                <p class="text-xs tracking-widest text-zinc-500 mb-4">STAY CONNECTED.</p>
-                <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
-                <p class="text-zinc-400 text-sm leading-relaxed max-w-sm">
-                    I'm Rose Shrestha, a visual creator driven by the art of storytelling.
-                    Through design, photography, cinematography, and aerial shots, I transform
-                    ideas into striking visuals that connect, engage, and leave an impression.
+            <!-- LEFT: GET IN TOUCH pixel text (exactly matches frame 5) -->
+            <div class="text-white space-y-8">
+                <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
+                    GET IN<br>TOUCH
+                </h1>
+                <p class="text-zinc-400 max-w-sm text-sm leading-relaxed font-light"
+                    style="font-family:'Inter',sans-serif;">
+                    Have a project in mind? Whether you're launching a brand, designing a product,
+                    or elevating your digital presence, we're here to bring your vision to life.
                 </p>
             </div>
 
-            <!-- CENTER -->
-            <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
-                <a href="index.html" class="magnetic hover:text-zinc-300 transition-colors">Home</a>
-                <a href="#" class="magnetic hover:text-zinc-300 transition-colors">About</a>
-                <div class="flex items-center gap-2 magnetic">
-                    Services <span class="text-xs text-zinc-600">(06)</span>
-                </div>
-                <a href="#contact" class="magnetic hover:text-zinc-300 transition-colors">Contact us</a>
+            <!-- RIGHT: standalone dark card — matches frame 5 exactly -->
+            <div class="bg-[#161616] border border-white/8 p-10 md:p-12 rounded-[2rem] shadow-2xl">
+
+                <h2 class="pixel-font text-white text-center mb-10 tracking-[0.4em] text-[10px] uppercase">
+                    Contact Us
+                </h2>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
+                                style="font-family:'Inter',sans-serif;">First name</label>
+                            <input type="text" placeholder="rose"
+                                class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
+                                style="font-family:'Inter',sans-serif;">Last name</label>
+                            <input type="text" placeholder="shrestha"
+                                class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
+                                style="font-family:'Inter',sans-serif;">Email</label>
+                            <input type="email" placeholder="roseshr12@gmail.com"
+                                class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-zinc-400 text-[11px] uppercase tracking-widest font-medium"
+                                style="font-family:'Inter',sans-serif;">Phone no.</label>
+                            <input type="tel" placeholder="9860307418"
+                                class="w-full bg-zinc-900 border border-white/8 rounded-xl px-5 py-4 text-white text-sm transition-all placeholder:text-zinc-600">
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-white text-black font-bold py-5 rounded-full hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase mt-2">
+                        Submit
+                    </button>
+                </form>
             </div>
 
-            <!-- RIGHT -->
-            <div class="flex flex-col items-start md:items-end text-white">
-                <p class="mb-6 text-lg">Social Media</p>
-                <div class="flex gap-6 text-xl">
-                    <i class="fab fa-x-twitter magnetic hover:text-zinc-300"></i>
-                    <i class="fab fa-instagram magnetic hover:text-zinc-300"></i>
-                    <i class="fab fa-linkedin magnetic hover:text-zinc-300"></i>
-                    <i class="fab fa-youtube magnetic hover:text-zinc-300"></i>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+     FOOTER — identical to index.html (frame 6)
+══════════════════════════════════════════════════ -->
+    <footer class="px-6 pb-24 bg-[#0a0a0a]">
+
+        <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+
+            <div class="grid md:grid-cols-3 gap-16">
+
+                <!-- LEFT -->
+                <div>
+                    <p class="text-xs tracking-widest text-zinc-500 mb-4">STAY CONNECTED.</p>
+                    <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed max-w-sm">
+                        I'm Rose Shrestha, a visual creator driven by the art of storytelling.
+                        Through design, photography, cinematography, and aerial shots, I transform
+                        ideas into striking visuals that connect, engage, and leave an impression.
+                    </p>
                 </div>
+
+                               <!-- CENTER -->
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
+                    <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
+                    <a href="about.html" class="magnetic hover:text-gray-300 transition-colors">About</a>
+                                        <a href="about.html" class="magnetic hover:text-gray-300 transition-colors">About</a>
+
+                    <a href="service.html" class="magnetic hover:text-gray-300 transition-colors">Service</a>
+                                        <a href="contact.html" class="magnetic hover:text-gray-300 transition-colors">Contact</a>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="flex flex-col items-start md:items-end text-white">
+                    <p class="mb-6 text-lg">Social Media</p>
+                    <div class="flex gap-6 text-xl">
+                        <i class="fab fa-x-twitter magnetic hover:text-zinc-300"></i>
+                        <i class="fab fa-instagram magnetic hover:text-zinc-300"></i>
+                        <i class="fab fa-linkedin magnetic hover:text-zinc-300"></i>
+                        <i class="fab fa-youtube magnetic hover:text-zinc-300"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BIG CENTER TEXT -->
+            <div class="text-center mt-20">
+                <h1 class="press-font text-6xl text-zinc-500">Rose</h1>
+                <p class="text-sm text-zinc-600 mt-6">©2026 The Rose Shrestha. All right reserved.</p>
             </div>
 
         </div>
 
-        <!-- BIG CENTER TEXT -->
-        <div class="text-center mt-20">
-            <h1 class="press-font text-6xl text-zinc-500">Rose</h1>
-            <p class="text-sm text-zinc-600 mt-6">©2026 The Rose Shrestha. All right reserved.</p>
+        <!-- ── FLOATING NAV ── -->
+        <div
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl z-50 border border-white/5">
+            <div class="flex gap-6 text-sm text-zinc-400">
+                <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
+                <a href="about.html" class="magnetic hover:text-white transition-colors">ABOUT</a>
+                <a href="service.html" class="magnetic hover:text-white transition-colors">SERVICES</a>
+            </div>
+            <a href="contact.html"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+                CONTACT +
+            </a>
         </div>
 
-    </div>
-
-    <!-- ── FLOATING NAV ── -->
-    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl z-50 border border-white/5">
-        <div class="flex gap-6 text-sm text-zinc-400">
-            <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
-            <a href="#" class="magnetic hover:text-white transition-colors">ABOUT</a>
-            <a href="#" class="magnetic hover:text-white transition-colors">SERVICES</a>
-        </div>
-        <a href="#contact"
-           class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
-            CONTACT +
-        </a>
-    </div>
-
-</footer>
+    </footer>
 
 
-<!-- ══════════════════════════════════════════════════ JS ══════════════════════════════════════════════════ -->
-<script>
-    // ── Reveal on scroll ──
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('active');
+    <!-- ══════════════════════════════════════════════════ JS ══════════════════════════════════════════════════ -->
+    <script>
+        // ── Reveal on scroll ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('active');
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── Magnetic ──
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                const x = e.clientX - r.left - r.width / 2;
+                const y = e.clientY - r.top - r.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
         });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // ── Magnetic ──
-    document.querySelectorAll('.magnetic').forEach(el => {
-        el.addEventListener('mousemove', e => {
-            const r = el.getBoundingClientRect();
-            const x = e.clientX - r.left - r.width / 2;
-            const y = e.clientY - r.top - r.height / 2;
-            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-        });
-        el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
-    });
-</script>
+    </script>
 
 </body>
+
 </html>

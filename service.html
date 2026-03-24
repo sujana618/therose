@@ -225,7 +225,7 @@
     </style>
 </head>
 
-<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+<body class="text-white overflow-x-hidden">
 
 
     <!-- ══════════════════════════════════════════════════
@@ -233,16 +233,18 @@
      PROJECTS pixel text bottom-left
      Courier bio top-right  (Frame 1)
 ══════════════════════════════════════════════════ -->
-    <section class="relative w-full overflow-hidden bg-[#0a0a0a]" style="min-height:100vh;">
+    <section class="relative w-full overflow-hidden" style="min-height:100vh;">
 
-        <!-- ghost PROJECTS text behind portrait -->
-        <div class="absolute bottom-0 left-0 pointer-events-none select-none overflow-hidden leading-none">
-            <p class="ghost-title">PROJECTS</p>
+        <!-- TOP-LEFT: PROJECTS heading + subtitle -->
+        <div class="absolute top-1/3 left-8 md:left-14 z-20 -translate-y-1/2">
+            <h2 class="pixel-font text-black leading-none"
+                style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.04em;">PROJECTS</h2>
+            <p class="pixel-font text-black tracking-widest mt-3" style="font-size: 11px;">EXPLORE · PROJECTS</p>
         </div>
 
         <!-- top-right Courier bio — exactly Frame 1 -->
-        <div class="hero-desc absolute top-1/3 right-8 md:right-14 z-10 max-w-[260px] hidden md:block">
-            <p class="text-white/35 leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
+        <div class="hero-desc absolute top-1/3 right-8 md:right-14 z-10 max-w-[260px] md:block">
+            <p class="text-black leading-[2.1] text-[10px] text-right" style="font-family:'Courier New',monospace;">
                 I'm Rose Shrestha, a visual creator driven by<br>
                 the art of storytelling. Through design,<br>
                 photography, cinematography, and aerial<br>
@@ -255,12 +257,6 @@
         <div class="hero-img relative z-10 flex justify-center items-end" style="min-height:100vh;">
             <img src="assets/images/rose.avif" alt="Rose Shrestha" class="object-cover object-top"
                 style="height:88vh; max-width:420px; width:100%; filter:grayscale(100%) contrast(1.05);">
-        </div>
-
-        <!-- bottom-left label block — exactly Frame 1 -->
-        <div class="hero-text absolute bottom-10 left-8 z-20">
-            <h1 class="pixel-font text-4xl md:text-6xl text-white leading-none mb-2">PROJECTS</h1>
-            <p class="pixel-font text-[9px] text-white/30 tracking-[0.3em] uppercase">Explore · Projects</p>
         </div>
 
     </section>
@@ -305,284 +301,77 @@
      Each card: full-bleed image, centred glass pill
      WEDDING · AERIAL · PORTRAIT · STUDIO
 ══════════════════════════════════════════════════ -->
-    <section class="w-full reveal" id="services">
+    <!-- ================= SERVICES ================= -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 mt-10 mb-10 md:px-10">
 
-        <!-- ROW 1: WEDDING + AERIAL -->
-        <div class="grid grid-cols-1 md:grid-cols-2" style="height: auto;">
-
-            <!-- ── WEDDING ── -->
-            <a href="wedding-details.html" class="svc-card block" style="height: clamp(380px, 55vw, 700px);">
-                <!-- bg image -->
-                <div class="svc-bg">
-                    <img src="assets/images/wedding.jpg" alt="Wedding" class="w-full h-full object-cover">
+        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+            <img src="assets/images/wedding.jpg"
+                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Wedding</span>
+                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Wedding</h3>
+                    <a href="wedding-details.html"
+                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                        Explore More <span class="text-xs">+</span>
+                    </a>
                 </div>
-                <div class="svc-scrim"></div>
-                <!-- glass pill -->
-                <div class="svc-inner">
-                    <div class="svc-pill">
-                        <p class="pixel-font text-[9px] text-white/60 uppercase tracking-[0.35em] mb-3">Wedding</p>
-                        <h2 class="pixel-font text-3xl md:text-4xl text-white mb-6 leading-tight">WEDDING</h2>
-                        <div class="svc-btn">
-                            <span
-                                class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white text-[10px] pixel-font tracking-widest transition-colors">
-                                Explore More +
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- ── AERIAL ── -->
-            <a href="aerial.html" class="svc-card block" style="height: clamp(380px, 55vw, 700px);">
-                <div class="svc-bg">
-                    <img src="assets/images/aerial.avif" alt="Aerial" class="w-full h-full object-cover"
-                        style="filter: grayscale(100%);">
-                </div>
-                <div class="svc-scrim"></div>
-                <div class="svc-inner">
-                    <div class="svc-pill">
-                        <p class="pixel-font text-[9px] text-white/60 uppercase tracking-[0.35em] mb-3">Aerial</p>
-                        <h2 class="pixel-font text-3xl md:text-4xl text-white mb-6 leading-tight">AERIAL</h2>
-                        <div class="svc-btn">
-                            <span
-                                class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white text-[10px] pixel-font tracking-widest transition-colors">
-                                Explore More +
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
+            </div>
         </div>
 
-        <!-- ROW 2: PORTRAIT + STUDIO -->
-        <div class="grid grid-cols-1 md:grid-cols-2">
-
-            <!-- ── PORTRAIT ── -->
-            <a href="portrait.html" class="svc-card block" style="height: clamp(380px, 55vw, 700px);">
-                <div class="svc-bg">
-                    <img src="assets/images/portrait.avif" alt="Portrait" class="w-full h-full object-cover"
-                        style="filter: grayscale(100%);">
+        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+            <img src="assets/images/aerial.avif"
+                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0  transition-all duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Aerial</span>
+                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Aerial</h3>
+                    <a href="aerial.html"
+                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                        Explore More <span class="text-xs">+</span>
+                    </a>
                 </div>
-                <div class="svc-scrim"></div>
-                <!-- script watermark, matches Frame 5 -->
-                <div class="absolute bottom-24 left-8 z-10 pointer-events-none">
-                    <p class="text-white/20 text-lg" style="font-family:'Dancing Script',cursive, serif;">The rose
-                        Shrestha ♡</p>
-                </div>
-                <div class="svc-inner">
-                    <div class="svc-pill">
-                        <p class="pixel-font text-[9px] text-white/60 uppercase tracking-[0.35em] mb-3">Portrait</p>
-                        <h2 class="pixel-font text-3xl md:text-4xl text-white mb-6 leading-tight">PORTRAIT</h2>
-                        <div class="svc-btn">
-                            <span
-                                class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white text-[10px] pixel-font tracking-widest transition-colors">
-                                Explore More +
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- ── STUDIO ── -->
-            <a href="studio.html" class="svc-card block" style="height: clamp(380px, 55vw, 700px);">
-                <div class="svc-bg">
-                    <img src="assets/images/studio.avif" alt="Studio" class="w-full h-full object-cover"
-                        style="filter: grayscale(100%);">
-                </div>
-                <div class="svc-scrim"></div>
-                <div class="svc-inner">
-                    <div class="svc-pill">
-                        <p class="pixel-font text-[9px] text-white/60 uppercase tracking-[0.35em] mb-3">Studio</p>
-                        <h2 class="pixel-font text-3xl md:text-4xl text-white mb-6 leading-tight">STUDIO</h2>
-                        <div class="svc-btn">
-                            <span
-                                class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white text-[10px] pixel-font tracking-widest transition-colors">
-                                Explore More +
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
+            </div>
         </div>
 
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════
-     PROCESS — How it works, numbered list
-══════════════════════════════════════════════════ -->
-    <section class="max-w-[1300px] mx-auto px-6 py-16 reveal">
-
-        <div class="mb-12 flex items-end justify-between gap-6">
-            <div>
-                <p class="pixel-font text-[9px] tracking-[0.35em] text-zinc-500 uppercase mb-3">The Process</p>
-                <h2 class="pixel-font text-3xl md:text-4xl text-white leading-tight">HOW IT<br>WORKS</h2>
+        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+            <img src="assets/images/portrait.avif"
+                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Portrait</span>
+                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Portrait</h3>
+                    <a href="portrait.html"
+                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                        Explore More <span class="text-xs">+</span>
+                    </a>
+                </div>
             </div>
-            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs text-right hidden md:block"
-                style="font-family:'Inter',sans-serif;">
-                From first conversation to final delivery—a clear, collaborative process
-                designed around your vision.
-            </p>
         </div>
 
-        <div class="space-y-0">
-
-            <div class="process-item flex items-center gap-8 py-8 group cursor-default">
-                <span class="process-num">01</span>
-                <div class="flex-1 grid md:grid-cols-3 gap-4 items-center">
-                    <h3 class="pixel-font text-sm text-white group-hover:text-white/70 transition-colors">CONSULTATION
-                    </h3>
-                    <p class="text-zinc-500 text-sm md:col-span-2" style="font-family:'Inter',sans-serif;">
-                        We start with a conversation—understanding your vision, style, location, and timeline before
-                        anything else.
-                    </p>
+        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
+            <img src="assets/images/studio.avif"
+                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
+                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Studio</span>
+                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Studio</h3>
+                    <a href="studio.html"
+                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
+                        Explore More <span class="text-xs">+</span>
+                    </a>
                 </div>
-                <span class="text-white/10 group-hover:text-white/30 transition-colors text-xl">→</span>
             </div>
-
-            <div class="process-item flex items-center gap-8 py-8 group cursor-default">
-                <span class="process-num">02</span>
-                <div class="flex-1 grid md:grid-cols-3 gap-4 items-center">
-                    <h3 class="pixel-font text-sm text-white group-hover:text-white/70 transition-colors">PLANNING</h3>
-                    <p class="text-zinc-500 text-sm md:col-span-2" style="font-family:'Inter',sans-serif;">
-                        Shot lists, mood boards, location scouting, timing—every detail planned so the day runs smoothly
-                        and nothing is missed.
-                    </p>
-                </div>
-                <span class="text-white/10 group-hover:text-white/30 transition-colors text-xl">→</span>
-            </div>
-
-            <div class="process-item flex items-center gap-8 py-8 group cursor-default">
-                <span class="process-num">03</span>
-                <div class="flex-1 grid md:grid-cols-3 gap-4 items-center">
-                    <h3 class="pixel-font text-sm text-white group-hover:text-white/70 transition-colors">THE SHOOT</h3>
-                    <p class="text-zinc-500 text-sm md:col-span-2" style="font-family:'Inter',sans-serif;">
-                        On the day, I work with presence and precision—directing with a light touch so every moment
-                        feels natural, not staged.
-                    </p>
-                </div>
-                <span class="text-white/10 group-hover:text-white/30 transition-colors text-xl">→</span>
-            </div>
-
-            <div class="process-item flex items-center gap-8 py-8 group cursor-default">
-                <span class="process-num">04</span>
-                <div class="flex-1 grid md:grid-cols-3 gap-4 items-center">
-                    <h3 class="pixel-font text-sm text-white group-hover:text-white/70 transition-colors">EDITING</h3>
-                    <p class="text-zinc-500 text-sm md:col-span-2" style="font-family:'Inter',sans-serif;">
-                        Careful colour grading and retouching—timeless edits that enhance reality without losing it.
-                        Delivered in 5–7 days.
-                    </p>
-                </div>
-                <span class="text-white/10 group-hover:text-white/30 transition-colors text-xl">→</span>
-            </div>
-
-            <div class="process-item flex items-center gap-8 py-8 group cursor-default">
-                <span class="process-num">05</span>
-                <div class="flex-1 grid md:grid-cols-3 gap-4 items-center">
-                    <h3 class="pixel-font text-sm text-white group-hover:text-white/70 transition-colors">DELIVERY</h3>
-                    <p class="text-zinc-500 text-sm md:col-span-2" style="font-family:'Inter',sans-serif;">
-                        High-resolution files and video reels delivered via private gallery link. Print-ready and
-                        web-optimised versions included.
-                    </p>
-                </div>
-                <span class="text-white/10 group-hover:text-white/30 transition-colors text-xl">→</span>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════
-     PRICING CARDS
-══════════════════════════════════════════════════ -->
-    <section class="max-w-[1300px] mx-auto px-6 pb-16 reveal">
-
-        <div class="mb-12">
-            <p class="pixel-font text-[9px] tracking-[0.35em] text-zinc-500 uppercase mb-3">Investment</p>
-            <h2 class="pixel-font text-3xl md:text-4xl text-white">PACKAGES</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-
-            <!-- Essential -->
-            <div
-                class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex flex-col gap-6 hover:border-white/10 transition-colors">
-                <div>
-                    <p class="pixel-font text-[9px] tracking-widest text-zinc-500 uppercase mb-3">Essential</p>
-                    <p class="pixel-font text-4xl text-white leading-none">NPR<br>15K</p>
-                    <p class="text-zinc-600 text-xs mt-2" style="font-family:'Inter',sans-serif;">Starting price</p>
-                </div>
-                <div class="border-t border-white/5 pt-6 space-y-3 flex-1">
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> 2-hour session</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> 30 edited photos</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> Private gallery</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> 5-day delivery</p>
-                </div>
-                <a href="#contact"
-                    class="pixel-font text-[9px] text-white/40 hover:text-white uppercase tracking-widest transition-colors">Book
-                    Now →</a>
-            </div>
-
-            <!-- Professional — highlighted -->
-            <div class="bg-white text-black rounded-[2rem] p-8 flex flex-col gap-6 relative overflow-hidden">
-                <div class="absolute top-6 right-6">
-                    <span
-                        class="pixel-font text-[8px] bg-black text-white px-3 py-1 rounded-full uppercase tracking-widest">Popular</span>
-                </div>
-                <div>
-                    <p class="pixel-font text-[9px] tracking-widest text-black/40 uppercase mb-3">Professional</p>
-                    <p class="pixel-font text-4xl text-black leading-none">NPR<br>35K</p>
-                    <p class="text-black/40 text-xs mt-2" style="font-family:'Inter',sans-serif;">Full-day coverage</p>
-                </div>
-                <div class="border-t border-black/10 pt-6 space-y-3 flex-1">
-                    <p class="flex items-center gap-3 text-black/70 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-black/30">—</span> Full-day shoot</p>
-                    <p class="flex items-center gap-3 text-black/70 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-black/30">—</span> 100+ edited photos</p>
-                    <p class="flex items-center gap-3 text-black/70 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-black/30">—</span> Short video reel</p>
-                    <p class="flex items-center gap-3 text-black/70 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-black/30">—</span> Private gallery</p>
-                    <p class="flex items-center gap-3 text-black/70 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-black/30">—</span> 7-day delivery</p>
-                </div>
-                <a href="#contact"
-                    class="pixel-font text-[9px] text-black/40 hover:text-black uppercase tracking-widest transition-colors">Book
-                    Now →</a>
-            </div>
-
-            <!-- Premium -->
-            <div
-                class="bg-zinc-900 border border-white/5 rounded-[2rem] p-8 flex flex-col gap-6 hover:border-white/10 transition-colors">
-                <div>
-                    <p class="pixel-font text-[9px] tracking-widest text-zinc-500 uppercase mb-3">Premium</p>
-                    <p class="pixel-font text-4xl text-white leading-none">NPR<br>65K</p>
-                    <p class="text-zinc-600 text-xs mt-2" style="font-family:'Inter',sans-serif;">Complete package</p>
-                </div>
-                <div class="border-t border-white/5 pt-6 space-y-3 flex-1">
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> Multi-day coverage</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> 300+ edited photos</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> Cinematic highlight reel</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> Aerial footage</p>
-                    <p class="flex items-center gap-3 text-zinc-400 text-xs" style="font-family:'Inter',sans-serif;">
-                        <span class="text-white/30">—</span> Print-ready files</p>
-                </div>
-                <a href="#contact"
-                    class="pixel-font text-[9px] text-white/40 hover:text-white uppercase tracking-widest transition-colors">Book
-                    Now →</a>
-            </div>
-
-        </div>
     </section>
 
 
@@ -658,62 +447,91 @@
     </section>
 
 
-    <!-- ══════════════════════════════════════════════════
-     FOOTER — identical to index.html (Frames 6–7)
-══════════════════════════════════════════════════ -->
-    <footer class="px-6 pb-24 bg-[#0a0a0a]">
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-[#0a0a0a] text-white px-6 pb-24">
 
         <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
 
+            <!-- GRID -->
             <div class="grid md:grid-cols-3 gap-16">
-                <div>
-                    <p class="text-xs tracking-widest text-gray-400 mb-4">STAY CONNECTED.</p>
-                    <h2 class="text-3xl font-bold mb-4 text-white">THE ROSE SHRESTHA</h2>
+
+                <!-- LEFT -->
+                <div class="reveal-item">
+                    <p class="text-xs tracking-widest text-gray-400 mb-4">
+                        STAY CONNECTED.
+                    </p>
+
+                    <h2 class="text-3xl font-bold mb-4">
+                        THE ROSE SHRESTHA
+                    </h2>
+
                     <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
-                        I'm Rose Shrestha, a visual creator driven by the art of storytelling.
-                        Through design, photography, cinematography, and aerial shots, I transform
-                        ideas into striking visuals that connect, engage, and leave an impression.
+                        I’m Rose Shrestha, a visual creator driven by storytelling and cinematic visuals.
                     </p>
                 </div>
 
-                <div class="flex flex-col items-start md:items-center space-y-5 text-lg text-white">
-                    <a href="index.html" class="magnetic hover:text-gray-300 transition-colors">Home</a>
-                    <a href="about.html" class="magnetic hover:text-gray-300 transition-colors">About</a>
-                    <a href="services.html" class="magnetic text-white">Services <span
-                            class="text-xs text-gray-500 ml-1">(06)</span></a>
-                    <a href="#contact" class="magnetic hover:text-gray-300 transition-colors">Contact us</a>
+                <!-- CENTER -->
+                <div class="flex flex-col items-start md:items-center space-y-5 text-lg">
+
+                    <a href="index.html" class="magnetic hover:text-gray-400 transition-colors">Home</a>
+
+                    <a href="about.html" class="magnetic hover:text-gray-400 transition-colors">About</a>
+
+                    <a href="service.html"
+                        class="flex items-center gap-2 magnetic hover:text-gray-400 transition-colors">
+                        Services <span class="text-xs text-gray-500">(06)</span>
+                    </a>
+
+                    <a href="contact.html" class="magnetic hover:text-gray-400 transition-colors">Contact us</a>
+
                 </div>
 
-                <div class="flex flex-col items-start md:items-end text-white">
+                <!-- RIGHT -->
+                <div class="flex flex-col items-start md:items-end">
+
                     <p class="mb-6 text-lg">Social Media</p>
+
                     <div class="flex gap-6 text-xl">
+
                         <i class="fab fa-x-twitter magnetic"></i>
                         <i class="fab fa-instagram magnetic"></i>
                         <i class="fab fa-linkedin magnetic"></i>
                         <i class="fab fa-youtube magnetic"></i>
+
                     </div>
+
                 </div>
+
             </div>
 
+            <!-- CENTER BIG TEXT -->
             <div class="text-center mt-20">
-                <h1 class="press-font text-6xl text-gray-300">Rose</h1>
-                <p class="text-sm text-gray-500 mt-6">©2026 The Rose Shrestha. All right reserved.</p>
+                <h1 class="font-['Press_Start_2P'] text-6xl text-gray-300 glow">
+                    Rose
+                </h1>
+
+                <p class="text-sm text-gray-500 mt-6">
+                    ©2026 The Rose Shrestha. All rights reserved.
+                </p>
             </div>
 
         </div>
 
-        <!-- ══ FLOATING NAV ══ -->
+        <!-- FLOATING NAV -->
         <div
-            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl z-50 border border-white/5">
+            class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black px-10 py-5 rounded-full shadow-xl nav-float z-10">
+
             <div class="flex gap-6 text-sm text-gray-300">
-                <a href="index.html" class="magnetic hover:text-white transition-colors">HOME</a>
-                <a href="about.html" class="magnetic hover:text-white transition-colors">ABOUT</a>
-                <a href="services.html" class="magnetic text-white">SERVICES</a>
+                <a href="index.html" class="hover:text-white transition-colors">HOME</a>
+                <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+                <a href="service.html" class="magnetic hover:text-white transition-colors">SERVICES</a>
             </div>
-            <a href="#contact"
-                class="bg-white text-black px-6 py-2 rounded-full magnetic font-semibold text-sm hover:bg-zinc-200 transition-colors">
+
+            <button onclick="window.location.href='contact.html'"
+                class="bg-white text-black px-6 py-2 rounded-full magnetic font-medium">
                 CONTACT +
-            </a>
+            </button>
+
         </div>
 
     </footer>
