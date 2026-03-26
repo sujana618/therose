@@ -1,302 +1,372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@300;400;500&display=swap"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Services — The Rose</title>
 
     <style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .pixel-font {
+        font-family: "Silkscreen", cursive;
+      }
+
+      .press-font {
+        font-family: "Press Start 2P", cursive;
+      }
+
+      /* ── Reveal ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s cubic-bezier(0.2, 0.65, 0.3, 1);
+      }
+
+      /* ── Magnetic ── */
+      .magnetic {
+        transition: transform 0.2s;
+        cursor: pointer;
+      }
+
+      /* ── Scrollbar ── */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+
+      /* ── Input focus ── */
+      input:focus,
+      textarea:focus {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
+        outline: none;
+      }
+
+      input,
+      textarea {
+        outline: none;
+      }
+
+      /* ════ HERO ════ */
+      @keyframes heroFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
 
-        .pixel-font {
-            font-family: 'Silkscreen', cursive;
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-img {
+        animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.65, 0.3, 1) forwards
+          0.15s;
+        opacity: 0;
+      }
+
+      .hero-text {
+        animation: heroFadeUp 1s cubic-bezier(0.2, 0.65, 0.3, 1) forwards 0.3s;
+        opacity: 0;
+      }
+
+      .hero-desc {
+        animation: heroFadeUp 1s cubic-bezier(0.2, 0.65, 0.3, 1) forwards 0.45s;
+        opacity: 0;
+      }
+
+      /* Ghost big text behind portrait */
+      .ghost-title {
+        font-family: "Silkscreen", cursive;
+        font-size: clamp(72px, 16vw, 200px);
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+        letter-spacing: -0.02em;
+      }
+
+      /* ════ SERVICE CARDS ════ */
+      /* Outer card */
+      .svc-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      /* Background image */
+      .svc-card .svc-bg {
+        position: absolute;
+        inset: 0;
+        transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+      }
+
+      .svc-card:hover .svc-bg {
+        transform: scale(1.07);
+      }
+
+      /* Dark scrim overlay */
+      .svc-card .svc-scrim {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.25);
+        transition: background 0.4s;
+      }
+
+      .svc-card:hover .svc-scrim {
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      /* Inner glass pill — always visible, button fades in */
+      .svc-inner {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .svc-pill {
+        background: rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 2.5rem;
+        padding: 2.5rem 3rem;
+        text-align: center;
+        min-width: 220px;
+        max-width: 320px;
+        width: 55%;
+        transition:
+          background 0.4s,
+          transform 0.4s;
+      }
+
+      .svc-card:hover .svc-pill {
+        background: rgba(0, 0, 0, 0.55);
+        transform: translateY(-4px);
+      }
+
+      /* Explore button — hidden by default, fades in on hover */
+      .svc-btn {
+        opacity: 0;
+        transform: translateY(6px);
+        transition:
+          opacity 0.35s ease 0.05s,
+          transform 0.35s ease 0.05s;
+      }
+
+      .svc-card:hover .svc-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ════ MARQUEE ════ */
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
         }
 
-        .press-font {
-            font-family: 'Press Start 2P', cursive;
+        to {
+          transform: translateX(-50%);
         }
+      }
 
-        /* ── Reveal ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-        }
+      .marquee-track {
+        animation: marquee 22s linear infinite;
+        display: flex;
+        width: max-content;
+      }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 1s cubic-bezier(.2, .65, .3, 1);
-        }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
 
-        /* ── Magnetic ── */
-        .magnetic {
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
+      /* ════ PROCESS LIST ════ */
+      .process-item {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        transition: border-color 0.3s;
+      }
 
-        /* ── Scrollbar ── */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
+      .process-item:hover {
+        border-color: rgba(255, 255, 255, 0.15);
+      }
 
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        /* ── Input focus ── */
-        input:focus,
-        textarea:focus {
-            background: rgba(255, 255, 255, 0.08) !important;
-            border-color: rgba(255, 255, 255, 0.25) !important;
-            outline: none;
-        }
-
-        input,
-        textarea {
-            outline: none;
-        }
-
-        /* ════ HERO ════ */
-        @keyframes heroFadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-img {
-            animation: heroFadeUp 1.2s cubic-bezier(.2, .65, .3, 1) forwards 0.15s;
-            opacity: 0;
-        }
-
-        .hero-text {
-            animation: heroFadeUp 1s cubic-bezier(.2, .65, .3, 1) forwards 0.3s;
-            opacity: 0;
-        }
-
-        .hero-desc {
-            animation: heroFadeUp 1s cubic-bezier(.2, .65, .3, 1) forwards 0.45s;
-            opacity: 0;
-        }
-
-        /* Ghost big text behind portrait */
-        .ghost-title {
-            font-family: 'Silkscreen', cursive;
-            font-size: clamp(72px, 16vw, 200px);
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
-            line-height: 1;
-            user-select: none;
-            pointer-events: none;
-            letter-spacing: -0.02em;
-        }
-
-        /* ════ SERVICE CARDS ════ */
-        /* Outer card */
-        .svc-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        /* Background image */
-        .svc-card .svc-bg {
-            position: absolute;
-            inset: 0;
-            transition: transform 0.8s cubic-bezier(.2, .65, .3, 1);
-        }
-
-        .svc-card:hover .svc-bg {
-            transform: scale(1.07);
-        }
-
-        /* Dark scrim overlay */
-        .svc-card .svc-scrim {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.25);
-            transition: background 0.4s;
-        }
-
-        .svc-card:hover .svc-scrim {
-            background: rgba(0, 0, 0, 0.45);
-        }
-
-        /* Inner glass pill — always visible, button fades in */
-        .svc-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .svc-pill {
-            background: rgba(0, 0, 0, 0.42);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2.5rem;
-            padding: 2.5rem 3rem;
-            text-align: center;
-            min-width: 220px;
-            max-width: 320px;
-            width: 55%;
-            transition: background 0.4s, transform 0.4s;
-        }
-
-        .svc-card:hover .svc-pill {
-            background: rgba(0, 0, 0, 0.55);
-            transform: translateY(-4px);
-        }
-
-        /* Explore button — hidden by default, fades in on hover */
-        .svc-btn {
-            opacity: 0;
-            transform: translateY(6px);
-            transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
-        }
-
-        .svc-card:hover .svc-btn {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ════ MARQUEE ════ */
-        @keyframes marquee {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        .marquee-track {
-            animation: marquee 22s linear infinite;
-            display: flex;
-            width: max-content;
-        }
-
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
-
-        /* ════ PROCESS LIST ════ */
-        .process-item {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border-color 0.3s;
-        }
-
-        .process-item:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .process-num {
-            font-family: 'Silkscreen', cursive;
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.2);
-            letter-spacing: 0.2em;
-            min-width: 2.5rem;
-        }
+      .process-num {
+        font-family: "Silkscreen", cursive;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.2);
+        letter-spacing: 0.2em;
+        min-width: 2.5rem;
+      }
     </style>
-</head>
+  </head>
 
-<body class="text-white overflow-x-hidden">
-
-
+  <body class="text-white overflow-x-hidden">
     <!-- ══════════════════════════════════════════════════
      HERO — dark bg, centred B&W portrait
      PROJECTS pixel text bottom-left
      Courier bio top-right  (Frame 1)
 ══════════════════════════════════════════════════ -->
-    <section class="relative w-full bg-white overflow-hidden flex flex-col md:block" style="min-height: 100vh;">
+    <section
+      class="relative w-full bg-white overflow-hidden flex flex-col md:block"
+      style="min-height: 100vh"
+    >
+      <div
+        class="relative md:absolute md:top-1/3 md:left-14 z-20 pt-16 pb-4 md:p-0 text-center md:text-left md:-translate-y-1/2"
+      >
+        <h2
+          class="pixel-font text-black leading-none"
+          style="font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: 0.04em"
+        >
+          PROJECTS
+        </h2>
+        <p
+          class="pixel-font text-black tracking-widest mt-2 md:mt-3"
+          style="font-size: 11px"
+        >
+          EXPLORE · PROJECTS
+        </p>
+      </div>
 
-        <div
-            class="relative md:absolute md:top-1/3 md:left-14 z-20 pt-16 pb-4 md:p-0 text-center md:text-left md:-translate-y-1/2">
-            <h2 class="pixel-font text-black leading-none"
-                style="font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: 0.04em;">PROJECTS</h2>
-            <p class="pixel-font text-black tracking-widest mt-2 md:mt-3" style="font-size: 11px;">EXPLORE · PROJECTS
-            </p>
-        </div>
+      <div
+        class="hero-img relative z-10 flex justify-center items-end px-6 md:px-0"
+      >
+        <img
+          src="assets/images/rose.avif"
+          alt="Rose Shrestha"
+          class="object-cover object-top w-full max-w-[320px] md:max-w-[420px] h-[45vh] md:h-[88vh]"
+          style="filter: grayscale(100%) contrast(1.05)"
+        />
+      </div>
 
-        <div class="hero-img relative z-10 flex justify-center items-end px-6 md:px-0">
-            <img src="assets/images/rose.avif" alt="Rose Shrestha"
-                class="object-cover object-top w-full max-w-[320px] md:max-w-[420px] h-[45vh] md:h-[88vh]"
-                style="filter: grayscale(100%) contrast(1.05);">
-        </div>
-
-        <div class="hero-desc relative md:absolute md:top-1/3 md:right-14 z-20 p-8 md:p-0 md:max-w-[280px]">
-            <p class="text-black text-[16px] md:text-[16px] text-center md:text-left"
-                style="font-family:'Courier New',monospace;">
-                I'm Rose Shrestha, a visual creator driven by<br class="hidden md:block">
-                the art of storytelling. Through design,<br class="hidden md:block">
-                photography, cinematography, and aerial<br class="hidden md:block">
-                shots, I transform ideas into striking visuals<br class="hidden md:block">
-                that connect, engage, and leave an impression.
-            </p>
-        </div>
+      <div
+        class="hero-desc relative md:absolute md:top-1/3 md:right-14 z-20 p-8 md:p-0 md:max-w-[280px]"
+      >
+        <p
+          class="text-black text-[16px] md:text-[16px] text-center md:text-left"
+          style="font-family: &quot;Courier New&quot;, monospace"
+        >
+          I'm Rose Shrestha, a visual creator driven by<br
+            class="hidden md:block"
+          />
+          the art of storytelling. Through design,<br class="hidden md:block" />
+          photography, cinematography, and aerial<br class="hidden md:block" />
+          shots, I transform ideas into striking visuals<br
+            class="hidden md:block"
+          />
+          that connect, engage, and leave an impression.
+        </p>
+      </div>
     </section>
-
 
     <!-- ══════════════════════════════════════════════════
      MARQUEE STRIP
 ══════════════════════════════════════════════════ -->
-    <div class="w-full overflow-hidden border-y border-white/5 py-4 bg-[#0f0f0f] reveal mb-2">
-        <div class="marquee-track">
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Photography</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Cinematography</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Aerial Shots</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Studio Sessions</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Wedding Coverage</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Portrait
-                Direction</span>
-            <span class="text-white/10 mx-4">·</span>
-            <!-- duplicate for seamless loop -->
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Photography</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Cinematography</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Aerial Shots</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Studio Sessions</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Wedding Coverage</span>
-            <span class="text-white/10 mx-4">·</span>
-            <span class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10">Portrait
-                Direction</span>
-            <span class="text-white/10 mx-4">·</span>
-        </div>
+    <div
+      class="w-full overflow-hidden border-y border-white/5 py-4 bg-[#0f0f0f] reveal mb-2"
+    >
+      <div class="marquee-track">
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Photography</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Cinematography</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Aerial Shots</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Studio Sessions</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Wedding Coverage</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Portrait Direction</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <!-- duplicate for seamless loop -->
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Photography</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Cinematography</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Aerial Shots</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Studio Sessions</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Wedding Coverage</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+        <span
+          class="pixel-font text-[10px] text-white uppercase tracking-[0.4em] mx-10"
+          >Portrait Direction</span
+        >
+        <span class="text-white/10 mx-4">·</span>
+      </div>
     </div>
-
 
     <!-- ══════════════════════════════════════════════════
      2×2 SERVICE CARDS GRID  (Frames 2–5)
@@ -304,338 +374,525 @@
      WEDDING · AERIAL · PORTRAIT · STUDIO
 ══════════════════════════════════════════════════ -->
     <!-- ================= SERVICES ================= -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 mt-10 mb-10 md:px-10">
-
-        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
-            <img src="assets/images/wedding.jpg"
-                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div
-                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
-                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Wedding</span>
-                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Wedding</h3>
-                    <a href="wedding-details.html"
-                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
-                        Explore More <span class="text-xs">+</span>
-                    </a>
-                </div>
-            </div>
+    <section
+      class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 mt-10 mb-10 md:px-10"
+    >
+      <div
+        class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer"
+      >
+        <img
+          src="assets/images/wedding.jpg"
+          class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+        ></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div
+            class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20"
+          >
+            <span
+              class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block"
+              >Wedding</span
+            >
+            <h3
+              class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase"
+            >
+              Wedding
+            </h3>
+            <a
+              href="wedding-details.html"
+              class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold"
+            >
+              Explore More <span class="text-xs">+</span>
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
-            <img src="assets/images/aerial.avif"
-                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0  transition-all duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div
-                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
-                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Aerial</span>
-                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Aerial</h3>
-                    <a href="aerial.html"
-                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
-                        Explore More <span class="text-xs">+</span>
-                    </a>
-                </div>
-            </div>
+      <div
+        class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer"
+      >
+        <img
+          src="assets/images/aerial.avif"
+          class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+        ></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div
+            class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20"
+          >
+            <span
+              class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block"
+              >Aerial</span
+            >
+            <h3
+              class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase"
+            >
+              Aerial
+            </h3>
+            <a
+              href="aerial.html"
+              class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold"
+            >
+              Explore More <span class="text-xs">+</span>
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
-            <img src="assets/images/portrait.avif"
-                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div
-                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
-                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Portrait</span>
-                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Portrait</h3>
-                    <a href="portrait.html"
-                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
-                        Explore More <span class="text-xs">+</span>
-                    </a>
-                </div>
-            </div>
+      <div
+        class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer"
+      >
+        <img
+          src="assets/images/portrait.avif"
+          class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+        ></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div
+            class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20"
+          >
+            <span
+              class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block"
+              >Portrait</span
+            >
+            <h3
+              class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase"
+            >
+              Portrait
+            </h3>
+            <a
+              href="portrait.html"
+              class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold"
+            >
+              Explore More <span class="text-xs">+</span>
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer">
-            <img src="assets/images/studio.avif"
-                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div
-                    class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20">
-                    <span class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block">Studio</span>
-                    <h3 class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase">Studio</h3>
-                    <a href="studio.html"
-                        class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold">
-                        Explore More <span class="text-xs">+</span>
-                    </a>
-                </div>
-            </div>
+      <div
+        class="relative w-full aspect-square md:aspect-video rounded-[60px] overflow-hidden group cursor-pointer"
+      >
+        <img
+          src="assets/images/studio.avif"
+          class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+        ></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div
+            class="bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] text-center w-64 md:w-80 transition-all duration-500 group-hover:scale-105 group-hover:bg-white/20"
+          >
+            <span
+              class="text-[10px] text-white/60 uppercase tracking-[0.3em] mb-2 block"
+              >Studio</span
+            >
+            <h3
+              class="pixel-font text-3xl md:text-4xl text-white mb-6 uppercase"
+            >
+              Studio
+            </h3>
+            <a
+              href="studio.html"
+              class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 rounded-full transition-all duration-300 text-[10px] uppercase tracking-widest font-bold"
+            >
+              Explore More <span class="text-xs">+</span>
+            </a>
+          </div>
         </div>
-
+      </div>
     </section>
-
 
     <!-- ══════════════════════════════════════════════════
      CONTACT — dark starfield bg (same as all pages)
 ══════════════════════════════════════════════════ -->
-    <section id="contact"
-        class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal">
+    <section
+      id="contact"
+      class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden p-6 md:p-12 reveal"
+    >
+      <div class="absolute inset-0 z-0">
+        <img
+          src="assets/images/contact.avif"
+          alt="Contact background"
+          class="w-full h-full object-cover grayscale opacity-60"
+        />
+        <div
+          class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"
+        ></div>
+      </div>
 
-        <div class="absolute inset-0 z-0">
-            <img src="assets/images/contact.avif" alt="Contact background"
-                class="w-full h-full object-cover grayscale opacity-60">
-            <div class="absolute inset-0 bg-black/60 shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
+      <div
+        class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+      >
+        <div class="text-white space-y-8">
+          <h1
+            class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter"
+          >
+            GET IN<br />TOUCH
+          </h1>
+          <p
+            class="text-gray-300 max-w-sm text-sm leading-relaxed font-light opacity-80"
+            style="font-family: &quot;Inter&quot;, sans-serif"
+          >
+            Have a project in mind? Whether you're launching a brand, designing
+            a product, or elevating your digital presence, we're here to bring
+            your vision to life.
+          </p>
         </div>
 
-        <div class="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-            <div class="text-white space-y-8">
-                <h1 class="pixel-font text-5xl md:text-[80px] leading-[0.9] tracking-tighter">
-                    GET IN<br>TOUCH
-                </h1>
-                <p class="text-gray-300 max-w-sm text-sm leading-relaxed font-light opacity-80"
-                    style="font-family:'Inter',sans-serif;">
-                    Have a project in mind? Whether you're launching a brand, designing a product,
-                    or elevating your digital presence, we're here to bring your vision to life.
-                </p>
+        <div
+          class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl"
+        >
+          <h2
+            class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase"
+          >
+            Contact Us
+          </h2>
+          <form class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-3">
+                <label
+                  class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70"
+                  >First name</label
+                >
+                <input
+                  type="text"
+                  placeholder="rose"
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600"
+                />
+              </div>
+              <div class="space-y-3">
+                <label
+                  class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70"
+                  >Last name</label
+                >
+                <input
+                  type="text"
+                  placeholder="shrestha"
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600"
+                />
+              </div>
             </div>
-
-            <div
-                class="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[60px] md:rounded-[80px] shadow-2xl">
-                <h2 class="pixel-font text-white text-center mb-12 tracking-[0.4em] text-[10px] uppercase">Contact Us
-                </h2>
-                <form class="space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="space-y-3">
-                            <label
-                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">First
-                                name</label>
-                            <input type="text" placeholder="rose"
-                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
-                        </div>
-                        <div class="space-y-3">
-                            <label
-                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Last
-                                name</label>
-                            <input type="text" placeholder="shrestha"
-                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="space-y-3">
-                            <label
-                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Email</label>
-                            <input type="email" placeholder="roseshr12@gmail.com"
-                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
-                        </div>
-                        <div class="space-y-3">
-                            <label
-                                class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70">Phone
-                                no.</label>
-                            <input type="tel" placeholder="9860307418"
-                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600">
-                        </div>
-                    </div>
-                    <button type="submit"
-                        class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase">
-                        Submit
-                    </button>
-                </form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-3">
+                <label
+                  class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  placeholder="roseshr12@gmail.com"
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600"
+                />
+              </div>
+              <div class="space-y-3">
+                <label
+                  class="text-white text-[11px] uppercase tracking-widest ml-1 font-medium opacity-70"
+                  >Phone no.</label
+                >
+                <input
+                  type="tel"
+                  placeholder="9860307418"
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-sm transition-all placeholder:text-gray-600"
+                />
+              </div>
             </div>
-
+            <button
+              type="submit"
+              class="w-full bg-white text-black font-bold py-5 rounded-full mt-6 hover:bg-zinc-200 transition-all active:scale-[0.98] text-[12px] tracking-[0.3em] uppercase"
+            >
+              Submit
+            </button>
+          </form>
         </div>
+      </div>
     </section>
-
 
     <!-- ================= FOOTER ================= -->
     <footer class="bg-[#0a0a0a] text-white px-6 pb-24">
+      <div
+        class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal"
+      >
+        <!-- GRID -->
+        <div class="grid md:grid-cols-3 gap-16">
+          <!-- LEFT -->
+          <div class="reveal-item">
+            <p class="text-xs tracking-widest text-gray-400 mb-4">
+              STAY CONNECTED.
+            </p>
 
-        <div class="max-w-7xl mx-auto bg-[#111] rounded-[60px] px-12 py-20 relative reveal">
+            <h2 class="text-3xl font-bold mb-4">THE ROSE SHRESTHA</h2>
 
-            <!-- GRID -->
-            <div class="grid md:grid-cols-3 gap-16">
+            <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+              I’m Rose Shrestha, a visual creator driven by storytelling and
+              cinematic visuals.
+            </p>
+          </div>
 
-                <!-- LEFT -->
-                <div class="reveal-item">
-                    <p class="text-xs tracking-widest text-gray-400 mb-4">
-                        STAY CONNECTED.
-                    </p>
+          <!-- CENTER -->
+          <div
+            class="flex flex-col items-start md:items-center space-y-5 text-lg"
+          >
+            <a
+              href="index.html"
+              class="pixel-font magnetic hover:text-gray-400 transition-colors"
+              >Home</a
+            >
 
-                    <h2 class="text-3xl font-bold mb-4">
-                        THE ROSE SHRESTHA
-                    </h2>
+            <a
+              href="about.html"
+              class="pixel-font magnetic hover:text-gray-400 transition-colors"
+              >About</a
+            >
 
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
-                        I’m Rose Shrestha, a visual creator driven by storytelling and cinematic visuals.
-                    </p>
-                </div>
+            <a
+              href="service.html"
+              class="pixel-font flex items-center gap-2 magnetic hover:text-gray-400 transition-colors"
+            >
+              Services <span class="text-xs text-gray-500">(06)</span>
+            </a>
 
-                <!-- CENTER -->
-                <div class="flex flex-col items-start md:items-center space-y-5 text-lg">
+            <a
+              href="contact.html"
+              class="pixel-font magnetic hover:text-gray-400 transition-colors"
+              >Contact us</a
+            >
+          </div>
 
-                    <a href="index.html" class="pixel-font magnetic hover:text-gray-400 transition-colors">Home</a>
+          <!-- RIGHT -->
+          <div class="flex flex-col items-start md:items-end">
+            <p class="mb-6 text-lg pixel-font">Social Media</p>
 
-                    <a href="about.html" class="pixel-font magnetic hover:text-gray-400 transition-colors">About</a>
+            <div class="flex gap-6 text-xl">
+              <a
+                href="https://www.facebook.com/the.rose.shrestha0?rdid=I4OHxiWirhDfpMnN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1KVNbK36FV%2F#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block"
+              >
+                <i class="fab fa-facebook magnetic"></i>
+              </a>
 
-                    <a href="service.html"
-                        class="pixel-font flex items-center gap-2 magnetic hover:text-gray-400 transition-colors">
-                        Services <span class="text-xs text-gray-500">(06)</span>
-                    </a>
+              <a
+                href="https://x.com/theroseshrestha"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block"
+              >
+                <i class="fab fa-x-twitter magnetic"></i
+              ></a>
 
-                    <a href="contact.html" class="pixel-font magnetic hover:text-gray-400 transition-colors">Contact
-                        us</a>
+              <a
+                href="https://www.instagram.com/the.rose.shrestha"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block"
+              >
+                <i class="fab fa-instagram magnetic"></i
+              ></a>
 
-                </div>
+              <a
+                href="https://www.linkedin.com/in/rose-shrestha-a10519295/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block"
+              >
+                <i class="fab fa-linkedin magnetic"></i
+              ></a>
 
-                <!-- RIGHT -->
-                <div class="flex flex-col items-start md:items-end">
-
-                    <p class="mb-6 text-lg pixel-font">Social Media</p>
-
-                    <div class="flex gap-6 text-xl">
-
-                        <i class="fab fa-x-twitter magnetic"></i>
-                        <i class="fab fa-instagram magnetic"></i>
-                        <i class="fab fa-linkedin magnetic"></i>
-                        <i class="fab fa-youtube magnetic"></i>
-
-                    </div>
-
-                </div>
-
+              <a
+                href="https://www.youtube.com/@theroseshrestha1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block"
+              >
+                <i class="fab fa-youtube magnetic"></i
+              ></a>
             </div>
-
-            <!-- CENTER BIG TEXT -->
-            <div class="text-center mt-20">
-                <h1 class="font-['Press_Start_2P'] text-6xl text-gray-300 glow">
-                    Rose
-                </h1>
-
-                <p class="text-sm text-gray-500 mt-6">
-                    ©2026 The Rose Shrestha. All rights reserved.
-                </p>
-            </div>
-
+          </div>
         </div>
 
-        <!-- FLOATING NAV -->
-        <nav>
-            <div
-                class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center justify-between w-[90%] max-w-[400px] bg-black/90 backdrop-blur-md px-6 py-3 rounded-full shadow-2xl z-[60] border border-white/10">
-                <a href="index.html" class="flex items-center">
-                    <img src="assets/images/roselogo.png" alt="Logo" class="h-6 w-auto brightness-200 invert">
-                </a>
+        <!-- CENTER BIG TEXT -->
+        <div class="text-center mt-20">
+          <h1 class="font-['Press_Start_2P'] text-6xl text-gray-300 glow">
+            Rose
+          </h1>
 
-                <button onclick="toggleNav()"
-                    class="bg-white text-black px-5 py-2 rounded-full font-medium pixel-font text-[10px] flex items-center gap-2 tracking-widest">
-                    MENU <span id="menu-icon">+</span>
-                </button>
+          <p class="text-sm text-gray-500 mt-6">
+            ©2026 The Rose Shrestha. All rights reserved.
+          </p>
+        </div>
+      </div>
+
+      <!-- FLOATING NAV -->
+      <nav>
+        <div
+          class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center justify-between w-[90%] max-w-[400px] bg-black/90 backdrop-blur-md px-6 py-3 rounded-full shadow-2xl z-[60] border border-white/10"
+        >
+          <a href="index.html" class="flex items-center">
+            <img
+              src="assets/images/roselogo.png"
+              alt="Logo"
+              class="h-6 w-auto brightness-200 invert"
+            />
+          </a>
+
+          <button
+            onclick="toggleNav()"
+            class="bg-white text-black px-5 py-2 rounded-full font-medium pixel-font text-[10px] flex items-center gap-2 tracking-widest"
+          >
+            MENU <span id="menu-icon">+</span>
+          </button>
+        </div>
+
+        <div
+          class="hidden lg:flex fixed bottom-10 left-1/2 -translate-x-1/2 items-center gap-10 bg-white px-12 py-5 rounded-full shadow-2xl z-50 border border-gray-100 nav-float"
+        >
+          <a
+            href="index.html"
+            class="flex items-center pr-4 border-r border-gray-100"
+          >
+            <img
+              src="assets/images/roselogo.png"
+              alt="Logo"
+              class="h-8 w-auto hover:opacity-70 transition-opacity"
+            />
+          </a>
+
+          <div class="flex gap-8 text-[11px] tracking-[0.2em]">
+            <a
+              href="index.html"
+              class="pixel-font text-black hover:text-gray-400 transition-colors uppercase"
+              >Home</a
+            >
+            <a
+              href="about.html"
+              class="pixel-font text-black hover:text-gray-400 transition-colors uppercase"
+              >About</a
+            >
+            <a
+              href="service.html"
+              class="pixel-font text-black hover:text-gray-400 transition-colors uppercase"
+              >Services</a
+            >
+          </div>
+
+          <button
+            onclick="window.location.href = 'contact.html'"
+            class="pixel-font text-[11px] tracking-[0.2em] text-black hover:text-gray-400 transition-colors uppercase font-bold"
+          >
+            CONTACT
+          </button>
+        </div>
+
+        <div
+          id="mobile-overlay"
+          class="fixed inset-0 bg-black/40 backdrop-blur-md z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out"
+        >
+          <div
+            class="w-[90%] max-w-[380px] bg-gradient-to-b from-[#222] to-[#000] rounded-[3rem] p-12 relative border border-white/10 shadow-2xl transform scale-95 transition-transform duration-500"
+            id="overlay-card"
+          >
+            <button
+              onclick="toggleNav()"
+              class="absolute top-10 left-1/2 -translate-x-1/2 text-white text-2xl font-light opacity-60 hover:opacity-100 transition-opacity"
+            >
+              ✕
+            </button>
+
+            <div class="flex flex-col items-center gap-12 mt-16 mb-20">
+              <a
+                href="index.html"
+                class="pixel-font text-white text-base tracking-[0.4em] hover:text-gray-400 transition-colors uppercase"
+                >Home</a
+              >
+              <a
+                href="about.html"
+                class="pixel-font text-white text-base tracking-[0.4em] hover:text-gray-400 transition-colors uppercase"
+                >About</a
+              >
+              <a
+                href="service.html"
+                class="pixel-font text-white text-base tracking-[0.4em] hover:text-gray-400 transition-colors uppercase"
+                >Services</a
+              >
             </div>
 
-            <div
-                class="hidden lg:flex fixed bottom-10 left-1/2 -translate-x-1/2 items-center gap-10 bg-white px-12 py-5 rounded-full shadow-2xl z-50 border border-gray-100 nav-float">
-                <a href="index.html" class="flex items-center pr-4 border-r border-gray-100">
-                    <img src="assets/images/roselogo.png" alt="Logo"
-                        class="h-8 w-auto hover:opacity-70 transition-opacity">
-                </a>
+            <button
+              onclick="window.location.href = 'contact.html'"
+              class="w-full bg-white text-black py-5 rounded-3xl pixel-font text-[10px] tracking-[0.3em] uppercase font-bold shadow-lg active:scale-95 transition-transform"
+            >
+              CONTACT +
+            </button>
+          </div>
+        </div>
+      </nav>
 
-                <div class="flex gap-8 text-[11px] tracking-[0.2em]">
-                    <a href="index.html"
-                        class="pixel-font text-black hover:text-gray-400 transition-colors uppercase">Home</a>
-                    <a href="about.html"
-                        class="pixel-font text-black hover:text-gray-400 transition-colors uppercase">About</a>
-                    <a href="service.html"
-                        class="pixel-font text-black hover:text-gray-400 transition-colors uppercase">Services</a>
-                </div>
+      <script>
+        function toggleNav() {
+          const overlay = document.getElementById("mobile-overlay");
+          const card = document.getElementById("overlay-card");
+          const menuIcon = document.getElementById("menu-icon");
 
-                <button onclick="window.location.href='contact.html'"
-                    class="pixel-font text-[11px] tracking-[0.2em] text-black hover:text-gray-400 transition-colors uppercase font-bold">
-                    CONTACT
-                </button>
-            </div>
+          // Toggle Classes
+          const isOpen = overlay.classList.contains("opacity-0");
 
-            <div id="mobile-overlay"
-                class="fixed inset-0 bg-black/40 backdrop-blur-md z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+          if (isOpen) {
+            overlay.classList.remove("opacity-0", "pointer-events-none");
+            card.classList.remove("scale-95");
+            card.classList.add("scale-100");
+            menuIcon.innerText = "-";
+            // Prevent scrolling when menu is open
+            document.body.style.overflow = "hidden";
+          } else {
+            overlay.classList.add("opacity-0", "pointer-events-none");
+            card.classList.add("scale-95");
+            card.classList.remove("scale-100");
+            menuIcon.innerText = "+";
+            document.body.style.overflow = "auto";
+          }
+        }
 
-                <div class="w-[90%] max-w-[380px] bg-gradient-to-b from-[#222] to-[#000] rounded-[3rem] p-12 relative border border-white/10 shadow-2xl transform scale-95 transition-transform duration-500"
-                    id="overlay-card">
-
-                    <button onclick="toggleNav()"
-                        class="absolute top-10 left-1/2 -translate-x-1/2 text-white text-2xl font-light opacity-60 hover:opacity-100 transition-opacity">
-                        ✕
-                    </button>
-
-                    <div class="flex flex-col items-center gap-12 mt-16 mb-20">
-                        <a href="index.html"
-                            class="pixel-font text-white text-base tracking-[0.4em] hover:text-gray-400 transition-colors uppercase">Home</a>
-                        <a href="about.html"
-                            class="pixel-font text-white text-base tracking-[0.4em] hover:text-gray-400 transition-colors uppercase">About</a>
-                        <a href="service.html"
-                            class="pixel-font text-white text-base tracking-[0.4em] hover:text-gray-400 transition-colors uppercase">Services</a>
-                    </div>
-
-                    <button onclick="window.location.href='contact.html'"
-                        class="w-full bg-white text-black py-5 rounded-3xl pixel-font text-[10px] tracking-[0.3em] uppercase font-bold shadow-lg active:scale-95 transition-transform">
-                        CONTACT +
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <script>
-            function toggleNav() {
-                const overlay = document.getElementById('mobile-overlay');
-                const card = document.getElementById('overlay-card');
-                const menuIcon = document.getElementById('menu-icon');
-
-                // Toggle Classes
-                const isOpen = overlay.classList.contains('opacity-0');
-
-                if (isOpen) {
-                    overlay.classList.remove('opacity-0', 'pointer-events-none');
-                    card.classList.remove('scale-95');
-                    card.classList.add('scale-100');
-                    menuIcon.innerText = '-';
-                    // Prevent scrolling when menu is open
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    overlay.classList.add('opacity-0', 'pointer-events-none');
-                    card.classList.add('scale-95');
-                    card.classList.remove('scale-100');
-                    menuIcon.innerText = '+';
-                    document.body.style.overflow = 'auto';
-                }
-            }
-
-            // Close menu if clicking outside the card
-            document.getElementById('mobile-overlay').addEventListener('click', function (e) {
-                if (e.target === this) toggleNav();
-            });
-        </script>
-
+        // Close menu if clicking outside the card
+        document
+          .getElementById("mobile-overlay")
+          .addEventListener("click", function (e) {
+            if (e.target === this) toggleNav();
+          });
+      </script>
     </footer>
-
 
     <!-- ══ JS ══ -->
     <script>
-        // Reveal
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.07 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      // Reveal
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("active");
+          });
+        },
+        { threshold: 0.07 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
 
-        // Magnetic
-        document.querySelectorAll('.magnetic').forEach(el => {
-            el.addEventListener('mousemove', e => {
-                const r = el.getBoundingClientRect();
-                el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.3}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
-            });
-            el.addEventListener('mouseleave', () => el.style.transform = 'translate(0,0)');
+      // Magnetic
+      document.querySelectorAll(".magnetic").forEach((el) => {
+        el.addEventListener("mousemove", (e) => {
+          const r = el.getBoundingClientRect();
+          el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.3}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
         });
+        el.addEventListener(
+          "mouseleave",
+          () => (el.style.transform = "translate(0,0)"),
+        );
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
